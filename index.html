@@ -4,50 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BizVoyage</title>
-  <link rel="icon" type="image/png" href="_public/images/favicon.io/favicon.ico">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/src/index.css">
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen bg-transparent">
-  <img src="images/bv2.png" alt="BizVoyage Logo" class="h-65 mb-5">
-
-  <div class="flex space-x-8">
-    <!-- Signup Form -->
-    <form class="signup bg-red-800 p-6 rounded shadow-md w-80">
-      <h2 class="text-xl text-white font-bold mb-4">Sign Up</h2>
-      <div class="mb-4">
-        <label for="signup-fName" class="block text-sm font-medium text-white">First Name</label>
-        <input type="name" name="signup-fName" id="signup-fName" class="mt-1 p-2 block w-full border rounded" required>
-      </div>
-      <div class="mb-4">
-        <label for="signup-lName" class="block text-sm font-medium text-white">Last name</label>
-        <input type="name" name="signup-lName" id="signup-lName" class="mt-1 p-2 block w-full border rounded" required>
-      </div>
-      <div class="mb-4">
-        <label for="signup-email" class="block text-sm font-medium text-white">Email</label>
-        <input type="email" name="signup-email" id="signup-email" class="mt-1 p-2 block w-full border rounded" required>
-      </div>
-      <div class="mb-4">
-        <label for="signup-password" class="block text-sm font-medium text-white">Password</label>
-        <input type="password" name="signup-password" id="signup-password" class="mt-1 p-2 block w-full border rounded" required>
-      </div>
-      <button type="submit" class="w-full bg-red-800 text-white p-2 rounded">Sign Up</button>
-    </form>
-
-    <!-- Login Form -->
-    <form class="login bg-red-800 p-6 rounded shadow-md w-80">
-      <h2 class="text-xl text-white font-bold mb-4">Login</h2>
-      <div class="mb-4">
-        <label for="login-email" class="block text-sm font-medium text-white">Email</label>
-        <input type="email" name="login-email" id="login-email" class="mt-1 p-2 block w-full border rounded" required>
-      </div>
-      <div class="mb-4">
-        <label for="login-password" class="block text-sm font-medium text-white">Password</label>
-        <input type="password" name="login-password" id="login-password" class="mt-1 p-2 block w-full border rounded" required>
-      </div>
-      <button type="submit" class="w-full bg-red-800 text-white p-2 rounded">Login</button>
-    </form>
-  </div>
-
-  <script type="module" src="src/firebase.js"></script>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
