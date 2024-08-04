@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "../firebase";
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useAuth } from "../contexts/authContext";
+import { auth } from "../firebase";
 
 const Login = () => {
   const { userLoggedIn } = useAuth();
@@ -15,7 +16,7 @@ const Login = () => {
     if (!isSigningIn) {
       setIsSigningIn(true);
       try {
-        await signInWithEmailAndPassword(email, password);
+        await signInWithEmailAndPassword(auth, email, password);
       } catch (error) {
         setErrorMessage(error.message);
         setIsSigningIn(false);
@@ -27,7 +28,7 @@ const Login = () => {
     e.preventDefault();
     if (!isSigningIn) {
       setIsSigningIn(true);
-      signInWithPopup(new GoogleAuthProvider()).catch(err => {
+      signInWithPopup(auth, new GoogleAuthProvider()).catch(err => {
         setErrorMessage(err.message);
         setIsSigningIn(false);
       });
@@ -85,7 +86,7 @@ const Login = () => {
               Sign In with Google
             </button>
           </form>
-          <p className="text-center text-sm">Don't have an account? <Link to={'/signup'} className='text-blue-600 underline'>Sign Up</Link></p>
+          <p className="text-center text-sm">Dont have an account? <Link to={'/signup'} className='text-blue-600 underline'>Sign Up</Link></p>
         </div>
       </main>
     </div>

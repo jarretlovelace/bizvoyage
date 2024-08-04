@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/authContext';
@@ -8,26 +7,37 @@ const Header = () => {
   const navigate = useNavigate();
   const { userLoggedIn } = useAuth();
 
-  const handleSignOut = () => {
-    signOut().then(() => {
+  const handleSignOut = async () => {
+    try {
+      await doSignOut();
       navigate('/login');
-    });
-  };
-
-  return (
-    <nav className='flex flex-row gap-x-2 w-full z-20 fixed top-0 left-0 h-12 border-b place-content-center'>
+    } catch (error) {
+      console.error('Error signing out: ', error);
+    }
+    };
+  
+return (
+  <nav className="flex justify-between items-center p-4 bg-blue-600 text-white fixed w-full top-0 z-10 shadow-md">
+    <div className="flex items-center space-x-4">
+      <img src="/images/bv2.png" alt="BizVoyage Logo" className="h-10" />
+      <Link to="/" className="text-xl font-bold">BizVoyage</Link>
+    </div>
+    <div className="flex items-center space-x-4">
       {userLoggedIn ? (
-        <button onClick={handleSignOut} className='text-sm text-blue-600 underline'>
-          Sign Out
-        </button>
+        <>
+          <Link to="/home" className="hover:text-gray-200">Home</Link>
+          <button onClick={handleSignOut} className="bg-red-500 px-3 py-2 rounded hover:bg-red-400">Sign Out</button>
+        </>
       ) : (
         <>
-          <Link className='text-sm text-blue-600 underline' to='/login'>Login</Link>
-          <Link className='text-sm text-blue-600 underline' to='/signup'>Sign Up</Link>
+          <Link to="/login" className="hover:text-gray-200">Login</Link>
+          <Link to="/signup" className="hover:text-gray-200">Sign Up</Link>
         </>
       )}
-    </nav>
-  );
+    </div>
+  </nav>
+);
 };
+
 
 export default Header;
