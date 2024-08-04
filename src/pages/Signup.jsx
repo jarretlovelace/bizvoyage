@@ -30,14 +30,14 @@ const Signup = () => {
   return (
     <div>
       {userLoggedIn && (<Navigate to={'/home'} replace={true} />)}
-      <main className="w-full h-screen flex items-center justify-center">
-        <div className='w-96 text-gray-600 space-y-5 p-4 shadow-xl border rounded-xl'>
+      <main className="w-full h-screen flex items-center justify-center bg-signup">
+        <div className='w-96 text-red-800 space-y-5 p-4 shadow-xl border rounded-xl bg-white bg-opacity-90'>
           <div className='text-center'>
-            <div className='text-gray-800 text-xl font-semibold sm:text-2xl'>BizVoyage</div>
+            <div className='text-red-800 text-xl font-semibold sm:text-2xl'>BizVoyage</div>
           </div>
           <form onSubmit={onSubmit} className="space-y-5">
             <div>
-              <label htmlFor="displayName" className='text-sm text-gray-600 font-bold'>Display Name</label>
+              <label htmlFor="displayName" className='text-sm text-red-800 font-bold'>Display Name</label>
               <input
                 id="displayName"
                 name="displayName"
@@ -48,7 +48,7 @@ const Signup = () => {
               />
             </div>
             <div>
-              <label htmlFor="email" className='text-sm text-gray-600 font-bold'>Email</label>
+              <label htmlFor="email" className='text-sm text-red-800 font-bold'>Email</label>
               <input
                 id="email"
                 name="email"
@@ -61,7 +61,7 @@ const Signup = () => {
               />
             </div>
             <div>
-              <label htmlFor="password" className='text-sm text-gray-600 font-bold'>Password</label>
+              <label htmlFor="password" className='text-sm text-red-800 font-bold'>Password</label>
               <input
                 id="password"
                 name="password"
@@ -89,4 +89,4 @@ const Signup = () => {
   );
 };
 
-export default Signup
+export default Signup;

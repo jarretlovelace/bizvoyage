@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom styles (if any) */
+.bg-home {
+    background-image: url('/public/images/biztravplane.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.bg-login {
+    background-image: url('/public/images/loginibgimage.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.bg-signup {
+    background-image: url('/public/images/signupbgimage.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+body {
+  @apply bg-gray-100 text-gray-800;
+}
+
+h1 {
+  @apply text-4xl font-bold mb-4;
+}
+
+p {
+  @apply text-xl mt-4;
+}
+
+/* Example of custom classes if needed */
+.custom-button {
+  @apply bg-blue-500 text-white font-medium py-2 px-4 rounded-lg;
+}
+
+.custom-input {
+  @apply w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border rounded-lg;
+}
