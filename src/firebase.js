@@ -8,11 +8,24 @@ const firebaseConfig = {
   storageBucket: "bizvoyage-e5b22.appspot.com",
   messagingSenderId: "707536312271",
   appId: "1:707536312271:web:7b9331faf73a307679a4ba",
-  // measurementId: "G-NEV4P0S5JL"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app)
+const auth = getAuth(app);
 
-export { app, auth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, updateProfile, sendPasswordResetEmail, updatePassword, sendEmailVerification, signOut };
+const doSignOut = () => signOut(auth);
+
+export { 
+  app, 
+  auth, 
+  signInWithEmailAndPassword, 
+  GoogleAuthProvider, 
+  signInWithPopup, 
+  createUserWithEmailAndPassword, 
+  updateProfile, 
+  sendPasswordResetEmail, 
+  updatePassword, 
+  sendEmailVerification, 
+  doSignOut 
+};

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/authContext';
 import { doSignOut } from '../firebase';
 
-const Header = () => {
+const Navbar = () => {
   const { userLoggedIn } = useAuth();
   const navigate = useNavigate();
 
@@ -39,4 +39,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;

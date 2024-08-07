@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "nodemon index.js",
+    "deploy": "vite build && firebase deploy"
   },
   "dependencies": {
     "firebase": "^10.12.5",
