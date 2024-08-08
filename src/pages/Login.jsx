@@ -1,3 +1,4 @@
+// src/pages/Login.jsx
 import React, { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
@@ -86,7 +87,7 @@ const Login = () => {
               Sign In with Google
             </button>
           </form>
-          <p className="text-center text-sm">Dont have an account? <Link to={'/signup'} className='text-blue-600 underline'>Sign Up</Link></p>
+          <p className="text-center text-sm">Don't have an account? <Link to={'/signup'} className='text-blue-600 underline'>Sign Up</Link></p>
         </div>
       </main>
     </div>

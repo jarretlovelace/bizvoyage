@@ -1,7 +1,9 @@
+// src/pages/Signup.jsx
 import React, { useState } from 'react';
 import { Navigate, Link } from 'react-router-dom';
-import { createUserWithEmailAndPassword, updateProfile } from '../firebase';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { useAuth } from '../contexts/authContext';
+import { auth } from '../firebase';
 
 const Signup = () => {
   const { userLoggedIn } = useAuth();
@@ -16,7 +18,7 @@ const Signup = () => {
     if (!isSigningUp) {
       setIsSigningUp(true);
       try {
-        const userCredential = await createUserWithEmailAndPassword(email, password);
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         if (displayName) {
           await updateProfile(userCredential.user, { displayName });
         }
