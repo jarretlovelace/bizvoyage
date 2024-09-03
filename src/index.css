@@ -2,13 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-landingpage {
+    background-image: url('/images/bv4.jpg');
+    background-size: cover;
+    background-position: center;
+}
 .bg-home {
-    background-image: url('/public/images/biztravplane.jpg');
+    background-image: url('images/bizhomepage.jpg');
     background-size: cover;
     background-position: center;
 }
 .bg-login {
-    background-image: url('/public/images/loginibgimage.jpg');
+    background-image: url('/images/biztravplane.jpg');
     background-size: cover;
     background-position: center;
 }
