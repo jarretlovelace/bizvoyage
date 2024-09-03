@@ -8,10 +8,10 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section className="bg-blue-500 bg-opacity-50 text-white py-20">
         <div className="container mx-auto text-center">
-          <h1 className="text-5xl font-bold text-red-500">Welcome to BizVoyage</h1>
+          <h1 className="text-5xl font-bold text-yellow-500">Welcome to BizVoyage</h1>
           <p className="mt-4 text-lg">Simplify your business travel management</p>
           <Link to="/signup">
-          <button className="mt-8 px-6 py-3 bg-yellow-500 text-blue-900 rounded-full font-semibold">
+          <button className="mt-8 px-6 py-3 bg-yellow-500 text-red-700 rounded-full font-semibold">
             Get Started
             </button>
         </Link>
@@ -19,9 +19,9 @@ const LandingPage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20">
+      <section className="bg-blue-500 bg-opacity-50 py-20">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold text-yellow-500">Why Choose BizVoyage?</h2>
+          <h2 className="text-3xl font-bold text-white">Why Choose BizVoyage?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl text- font-bold text-color: bg-yellow-500">Comprehensive Management</h3>

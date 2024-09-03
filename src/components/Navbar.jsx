@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/authContext';
 import { doSignOut } from '../firebase';
@@ -6,6 +6,7 @@ import { doSignOut } from '../firebase';
 const Navbar = () => {
   const { userLoggedIn } = useAuth();
   const navigate = useNavigate();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleSignOut = async () => {
     try {
@@ -16,13 +17,31 @@ const Navbar = () => {
     }
   };
 
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   return (
     <nav className="flex justify-between items-center p-4 bg-blue-600 text-white fixed w-full top-0 z-10 shadow-md">
       <div className="flex items-center space-x-4">
         <img src="/images/bv2.png" alt="BizVoyage Logo" className="h-10" />
         <Link to="/" className="text-xl font-bold">BizVoyage</Link>
       </div>
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-4 relative">
+        {/* Dropdown trigger */}
+        <button onClick={toggleDropdown} className="hover:text-gray-200">Menu</button>
+
+        {/* Dropdown menu */}
+        {dropdownOpen && (
+          <div className="absolute right-0 mt-10 w-48 bg-white rounded-md shadow-lg py-2 z-20">
+            <Link to="/my-trips" className="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white">My Trips</Link>
+            <Link to="/book-a-trip" className="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white">Book a Trip</Link>
+            <Link to="/travel-history" className="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white">Travel History</Link>
+            <Link to="/perks" className="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white">Perks</Link>
+            <Link to="/settings" className="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white">Settings</Link>
+          </div>
+        )}
+
         {userLoggedIn ? (
           <>
             <Link to="/home" className="hover:text-gray-200">Home</Link>
