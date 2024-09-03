@@ -1,15 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   return (
     <div className="bg-landingpage min-h-screen">
-      <img src="/public/images/bv4.jpg" alt="BizVoyage Logo" className="h-10" />
+      <img src="/images/bv4.jpg" alt="BizVoyage Logo" className="h-10" />
       {/* Hero Section */}
       <section className="bg-blue-500 bg-opacity-50 text-white py-20">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl font-bold text-red-500">Welcome to BizVoyage</h1>
           <p className="mt-4 text-lg">Simplify your business travel management</p>
-          <button className="mt-8 px-6 py-3 bg-yellow-500 text-blue-900 rounded-full font-semibold">Get Started</button>
+          <Link to="/signup">
+          <button className="mt-8 px-6 py-3 bg-yellow-500 text-blue-900 rounded-full font-semibold">
+            Get Started
+            </button>
+        </Link>
         </div>
       </section>
 
@@ -35,7 +40,7 @@ const LandingPage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-blue-300 bg-opacity-50 text-white py-20">
+      <section className="bg-blue-300 bg-opacity-50 text-black py-20">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold">What Our Clients Say</h2>
           <div className="mt-10 space-y-8">
@@ -55,7 +60,11 @@ const LandingPage = () => {
       <section className="bg-blue-500 text-white py-20">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold">Ready to Transform Your Business Travel?</h2>
-          <button className="mt-8 px-6 py-3 bg-yellow-500 text-blue-900 rounded-full font-semibold">Sign Up Now</button>
+          <Link to="/signup">
+          <button className="mt-8 px-6 py-3 bg-yellow-500 text-blue-900 rounded-full font-semibold">
+            Sign Up Now
+            </button>
+          </Link>
         </div>
       </section>
     </div>

@@ -20,13 +20,13 @@ const Header = () => {
     <nav className="flex justify-between items-center p-4 bg-blue-600 text-white fixed w-full top-0 z-10 shadow-md">
       <div className="flex items-center space-x-4">
         <img src="/images/bv2.png" alt="BizVoyage Logo" className="h-10" />
-        <Link to="/" className="text-xl font-bold">BizVoyage</Link>
+        <Link to="/" className="text-xl font-bold text-red-500">BizVoyage</Link>
       </div>
       <div className="flex items-center space-x-4">
         {userLoggedIn ? (
           <>
-            <Link to="/home" className="hover:text-gray-200">Home</Link>
-            <button onClick={handleSignOut} className="bg-red-500 px-3 py-2 rounded hover:bg-red-400">Sign Out</button>
+            <Link to="/home" className="hover:text-red-500">Home</Link>
+            <button onClick={handleSignOut} className="bg-red-500 px-3 py-2 rounded hover:bg-red-500">Sign Out</button>
           </>
         ) : (
           <>
