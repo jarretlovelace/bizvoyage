@@ -35,7 +35,7 @@ const LandingPage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-gray-100 py-20">
+      <section className="bg-blue-300 bg-opacity-50 text-white py-20">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold">What Our Clients Say</h2>
           <div className="mt-10 space-y-8">
