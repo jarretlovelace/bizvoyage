@@ -1,4 +1,8 @@
+// src/App.jsx
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';  // Firebase auth check
+import { auth } from './firebase';  // Your Firebase config file
 import LandingPage from './components/LandingPage';
 import HomePage from './pages/HomePage';
 import BookATrip from './pages/BookATrip';
@@ -9,34 +13,45 @@ import TripHistory from './pages/TripHistory';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Navbar from './components/Navbar';
-import { AuthProvider, useAuth } from './contexts/authContext';
-
-// PrivateRoute to protect authenticated routes
-function PrivateRoute({ children }) {
-    const { currentUser } = useAuth();
-    return currentUser ? children : <Navigate to="/" />;
-}
+import PrivateRoute from './components/PrivateRoute';  // PrivateRoute component
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Monitor authentication state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);  // Stop loading once we get the auth state
+    });
+
+    return () => unsubscribe();  // Clean up the observer
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;  // Loading state while checking auth
+  }
+
   return (
     <Router>
-      <AuthProvider>
-        <Navbar />
-        <Routes>
-          {/* Public routes for unauthorized users */}
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+      <Navbar />
+      <Routes>
+        {/* If user is authenticated, redirect to home, otherwise show LandingPage */}
+        <Route path="/" element={user ? <Navigate to="/home" /> : <LandingPage />} />
 
-          {/* Private routes for authenticated users */}
-          <Route path="/home" element={<PrivateRoute><HomePage /></PrivateRoute>} />
-          <Route path="/bookatrip" element={<PrivateRoute><BookATrip /></PrivateRoute>} />
-          <Route path="/mytrips" element={<PrivateRoute><MyTrips /></PrivateRoute>} />
-          <Route path="/mycompany" element={<PrivateRoute><MyCompany /></PrivateRoute>} />
-          <Route path="/perks" element={<PrivateRoute><Perks /></PrivateRoute>} />
-          <Route path="/triphistory" element={<PrivateRoute><TripHistory /></PrivateRoute>} />
-        </Routes>
-      </AuthProvider>
+        {/* Auth routes (only show if not signed in) */}
+        <Route path="/signin" element={!user ? <SignIn /> : <Navigate to="/home" />} />
+        <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/home" />} />
+
+        {/* Private routes - Only accessible if user is signed in */}
+        <Route path="/home" element={<PrivateRoute user={user}><HomePage /></PrivateRoute>} />
+        <Route path="/bookatrip" element={<PrivateRoute user={user}><BookATrip /></PrivateRoute>} />
+        <Route path="/mytrips" element={<PrivateRoute user={user}><MyTrips /></PrivateRoute>} />
+        <Route path="/mycompany" element={<PrivateRoute user={user}><MyCompany /></PrivateRoute>} />
+        <Route path="/perks" element={<PrivateRoute user={user}><Perks /></PrivateRoute>} />
+        <Route path="/triphistory" element={<PrivateRoute user={user}><TripHistory /></PrivateRoute>} />
+      </Routes>
     </Router>
   );
 }

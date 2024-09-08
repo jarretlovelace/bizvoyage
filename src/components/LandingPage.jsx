@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '/src/images/bv1.png'; // Ensure this image has a transparent background
+import logo from '/src/images/image.png'; // Ensure this image has a transparent background
 
 const LandingPage = () => {
   return (
@@ -11,7 +11,7 @@ const LandingPage = () => {
 
       {/* Content: Sign-in/Sign-up */}
       <div className="max-w-md w-full bg-white shadow-md p-8 rounded-md">
-        <h1 className="text-2xl font-bold text-center mb-6">Welcome to BizVoyage</h1>
+        <h1 className="text-5xl font-thin text-center mb-6 text-red-700">Welcome to BizVoyage</h1>
         <p className="text-center mb-4">Please sign in or sign up to continue</p>
         {/* Sign-In and Sign-Up buttons/links */}
         <div className="flex justify-around">
