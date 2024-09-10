@@ -1,0 +1,33 @@
+.dashboard-section {
+    /* You could add specific padding, margins, or background here */
+    padding: 20px;
+  }
+  
+  /* Example: Calendar specific styles */
+  .calendar-section {
+    /* Add any custom rules for the calendar if needed */
+    background-color: #f0f0f0;
+  }
+  
+  /* Adding a subtle hover effect for the images */
+  img {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  img:hover {
+    transform: scale(1.05); /* Slightly enlarges the image on hover */
+  }
+  
+  /* Overriding Tailwind's default margin or padding */
+  .custom-section {
+    margin: 10px 0;
+    padding: 20px;
+  }
+  
+  /* Custom media queries (if necessary) */
+  @media (max-width: 768px) {
+    .dashboard-section {
+      padding: 10px;
+    }
+  }
+  

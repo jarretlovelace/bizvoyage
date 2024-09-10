@@ -1,27 +1,30 @@
-// src/pages/SignUp.jsx
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import backgroundImage from '/src/images/images-8.jpeg'; 
 
-const SignUp = () => {
+const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSignUp = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/home');  // Redirect after sign-up
+      navigate('/home');
     } catch (error) {
       alert('Failed to create an account');
     }
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <form onSubmit={handleSignUp} className="bg-white p-8 rounded shadow-lg">
+    <div
+      className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
+      <form onSubmit={handleSignup} className="bg-white p-8 rounded shadow-lg">
         <h1 className="text-xl mb-4">Sign Up</h1>
         <input
           type="email"
@@ -43,4 +46,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Signup;
