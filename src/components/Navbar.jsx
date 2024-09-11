@@ -1,21 +1,22 @@
 import { Link } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
-import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { doSignOut } from '../auth';  // Use the helper function from auth.js
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // Dropdown state
   const navigate = useNavigate();
 
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        navigate('/signin'); // Redirect to SignIn page after sign-out
-      })
-      .catch((error) => {
-        alert('Error signing out');
-      });
+  const handleSignOut = async () => {
+    console.log('Sign out button clicked'); // Debug log
+    try {
+      await doSignOut();  // Use the doSignOut helper from auth.js
+      console.log('User signed out');  // Debug log to confirm sign-out
+      navigate('/signin');  // Redirect to SignIn page after sign-out
+    } catch (error) {
+      console.log('Error signing out:', error);  // Log errors
+      alert('Error signing out: ', error.message);
+    }
   };
 
   return (
@@ -41,7 +42,10 @@ const Navbar = () => {
               <Link to="/perks" className="block px-4 py-2">Perks</Link>
               <Link to="/triphistory" className="block px-4 py-2">Trip History</Link>
               <button
-                onClick={handleSignOut}
+                onClick={() => {
+                  setIsOpen(false);  // Close the dropdown before sign-out
+                  handleSignOut();   // Trigger the sign-out function
+                }}
                 className="block px-4 py-2 text-black"
               >
                 Sign Out

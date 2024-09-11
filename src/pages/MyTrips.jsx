@@ -10,9 +10,10 @@ const MyTrips = () => {
         backgroundPosition: 'center'
       }}
     >
-      <div className="p-6">
-        <h1 className="text-4xl font-bold mb-4">My Trips</h1>
-        <p>View your upcoming and past business trips here.</p>
+        <div
+        className="col-span-1 row-span-1 bg-red-700 rounded-lg shadow-lg p-3">
+        <h1 className="text-4xl font-bold mb-1 text-transform: uppercase font-mono text-white">My Trips</h1>
+        <p className="text-white">Review all current booked travel itenerary details here.</p>
       </div>
     </div>
   );

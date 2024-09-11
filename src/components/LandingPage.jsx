@@ -35,13 +35,13 @@ const LandingPage = () => {
         <h2 className="text-3xl md:text-4xl mb-6">What Our Clients Say</h2>
         <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
           {/* Testimonial 1 */}
-          <div className="bg-red-600 p-4 rounded-lg w-full md:w-80 text-left" data-aos="flip-left">
+          <div className="bg-red-700 p-4 rounded-lg w-full md:w-80 text-left" data-aos="flip-left">
             <h3 className="text-xl font-bold text-white mb-2">Acme Corp</h3>
             <p className="text-white">"BizVoyage has transformed how we manage business travel!"</p>
           </div>
           
           {/* Testimonial 2 */}
-          <div className="bg-red-600 p-4 rounded-lg w-full md:w-80 text-left" data-aos="flip-right">
+          <div className="bg-red-700 p-4 rounded-lg w-full md:w-80 text-left" data-aos="flip-right">
             <h3 className="text-xl font-bold text-white mb-2">Globex Inc</h3>
             <p className="text-white">"The most efficient travel management tool we've used."</p>
           </div>

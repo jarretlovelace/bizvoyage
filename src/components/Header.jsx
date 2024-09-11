@@ -29,7 +29,7 @@ const Header = () => {
       <div className="flex items-center space-x-4">
         {/* Use a button for logo click */}
         <button onClick={handleLogoClick} className="flex items-center space-x-2">
-          <img src="/images/image.png" alt="BizVoyage Logo" className="h-10" />
+          <img src="/src/images/image.png" alt="BizVoyage Logo" className="h-10" />
           <span className="text-xl font-bold text-red-500">BizVoyage</span>
         </button>
       </div>
