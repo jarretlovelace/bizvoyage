@@ -35,7 +35,7 @@ function App() {
   return (
     <Router>
       {/* Navbar displayed for all pages */}
-      {user && <Navbar />}  Navbar only shows if user is logged in
+      {user && <Navbar />} 
       <Routes>
         {/* Landing Page */}
         <Route path="/" element={user ? <Navigate to="/home" /> : <LandingPage />} />

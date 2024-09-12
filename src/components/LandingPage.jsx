@@ -17,7 +17,7 @@ const LandingPage = () => {
     >
       {/* Logo Section */}
       <div className="mb-10" data-aos="fade-down">
-        <img src={logo} alt="BizVoyage Logo" className="w-48 h-48 md:w-64 md:h-64 mx-auto object-contain" />
+        <img src={logo} alt="BizVoyage Logo" className="w-75 h-75 md:w-64 md:h-64 mx-auto object-contain" />
       </div>
 
       {/* Welcome Message and Call-to-Action */}
