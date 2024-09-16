@@ -5,7 +5,7 @@ const BookATrip = () => {
     <div
       className="min-h-screen opacity-100 bg-cover bg-center"
       style={{
-        backgroundImage: "url('../src/images/images-5.jpeg')",
+        backgroundImage: "url('../src/images/ai_image1.jpeg')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'

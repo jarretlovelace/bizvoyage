@@ -1,6 +1,6 @@
 import { auth, googleProvider } from '../firebase'; 
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import backgroundImage from '../images/images-10.jpeg';
+import backgroundImage from '../images/ai_image8.jpeg'; 
 import { useState } from 'react';
 
 const SignIn = () => {
@@ -14,7 +14,7 @@ const SignIn = () => {
       await signInWithEmailAndPassword(auth, email, password);
       // Redirect or show success message here
     } catch (err) {
-      setError(err.message);  // Display error message
+      setError(err.message); 
     }
   };
 
@@ -23,7 +23,7 @@ const SignIn = () => {
       await signInWithPopup(auth, googleProvider);
       // Redirect or show success message here
     } catch (err) {
-      setError(err.message);  // Display error message
+      setError(err.message);  
     }
   };
 

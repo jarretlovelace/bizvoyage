@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import backgroundImage from '/src/images/images-8.jpeg'; 
+import backgroundImage from '/src/images/ai_image8.jpeg'; 
 
 const Signup = () => {
   const [email, setEmail] = useState('');

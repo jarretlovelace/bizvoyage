@@ -5,7 +5,7 @@ const MyTrips = () => {
     <div
       className="min-h-screen bg-cover bg-center"
       style={{
-        backgroundImage: "url('/src/images/image12.jpg')", 
+        backgroundImage: "url('/src/images/ai_image4.jpg')", 
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}

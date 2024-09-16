@@ -5,7 +5,7 @@ const MyCompany = () => {
     <div
       className="p-6"
       style={{
-        backgroundImage: "url('/src/images/images-9.jpeg')", 
+        backgroundImage: "url('/src/images/ai_image3.jpeg')", 
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
