@@ -39,7 +39,7 @@ const Navbar = () => {
               <Link to="/bookatrip" className="block px-4 py-2">Book A Trip</Link>
               <Link to="/mytrips" className="block px-4 py-2">My Trips</Link>
               <Link to="/MyBusiness" className="block px-4 py-2">My Company</Link>
-              <Link to="/perks" className="block px-4 py-2">Perks</Link>
+              <Link to="/Perks" className="block px-4 py-2">Perks</Link>
               <Link to="/triphistory" className="block px-4 py-2">Trip History</Link>
               <button
                 onClick={() => {

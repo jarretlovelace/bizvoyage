@@ -78,7 +78,7 @@ function App() {
           }
         />
         <Route
-          path="/perks"
+          path="/Perks"
           element={
             <PrivateRoute user={user}>
               <Perks />
