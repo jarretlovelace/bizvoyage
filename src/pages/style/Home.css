@@ -31,3 +31,30 @@
     }
   }
 
+  .expanded {
+  transform: scale(1.05);
+  transition: transform 0.5s ease-out;
+}
+
+.expanded-section {
+  grid-column: span 2 / span 2; /* Full width on expand */
+  height: 100vh; /* Full height */
+}
+
+.transition-transform {
+  transition: transform 0.3s ease-in-out;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 315px;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+

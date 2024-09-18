@@ -5,9 +5,9 @@ const Weather = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_KEY = 'YOUR_OPENWEATHERMAP_API_KEY'; // Replace with your API key
-  const city = 'Paris'; // Change to any city you'd like
-  const units = 'metric'; // Use 'metric' for Celsius or 'imperial' for Fahrenheit
+  const API_KEY = 'cbb6178fb057f7e9f38af2506435c478'; 
+  const city = 'Denver'; 
+  const units = 'imperial'; 
 
   useEffect(() => {
     const fetchWeather = async () => {

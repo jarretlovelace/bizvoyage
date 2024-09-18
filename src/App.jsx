@@ -7,7 +7,7 @@ import LandingPage from './components/LandingPage.jsx';  // Corrected import pat
 import Home from './pages/Home.jsx';
 import BookATrip from './pages/BookATrip';
 import MyTrips from './pages/MyTrips';
-import MyCompany from './pages/MyCompany';
+import MyBusiness from './pages/MyBusiness.jsx';
 import Perks from './pages/Perks';
 import TripHistory from './pages/TripHistory';
 import SignIn from './pages/SignIn';
@@ -70,10 +70,10 @@ function App() {
           }
         />
         <Route
-          path="/mycompany"
+          path="/MyBusiness"
           element={
             <PrivateRoute user={user}>
-              <MyCompany />
+              <MyBusiness />
             </PrivateRoute>
           }
         />
