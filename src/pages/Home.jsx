@@ -91,6 +91,12 @@ const Home = () => {
 
   return (
     <div className="relative w-screen h-screen bg-gray-100">
+      <div className="border-2 border-gray-300 rounded-lg p-4 shadow-lg">
+  {/* Dashboard content goes here */}
+  <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
+  {/* Add other dashboard items here */}
+</div>
+
       {/* Logo Background */}
       <img
         src={logo}
@@ -101,7 +107,7 @@ const Home = () => {
       {/* Welcome Title */}
       <div className="relative z-10 p-6">
         <h1 className="text-6xl font-bold text-center text-red-900">
-          Welcome to BizVoyage
+          {/* Welcome to BizVoyage */}
         </h1>
       </div>
 

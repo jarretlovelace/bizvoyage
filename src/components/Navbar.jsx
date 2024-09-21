@@ -30,10 +30,22 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="relative z-20 bg-red-700 text-white p-4 flex justify-between items-center">
-      <h2 className="text-xl font-bold">BizVoyage</h2>
+    <nav className="relative z-20 bg-red-700 text-white p-4 flex items-center justify-between">
+      {/* Logo Section - Left-Aligned */}
+      <div className="flex items-center">
+        <img 
+          src="/src/images/bv2.png" // Path to your logo image
+          alt="BizVoyage Logo"
+          className="h-16 w-auto" // Adjust size as needed
+        />
+      </div>
 
-      {/* Menu Button */}
+      {/* Centered Title */}
+      <h2 className="absolute left-1/2 transform -translate-x-1/2 text-4xl font-bold text-center">
+        Welcome to BizVoyage
+      </h2>
+
+      {/* Menu Button - Right-Aligned */}
       <button
         className="text-white text-lg"
         onClick={toggleMenu}
