@@ -1,0 +1,8 @@
+.calendar-container {
+    background-image: url('/src/images/bv2.png'); /* Specify your image path */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh; /* Ensures it takes the full viewport height */
+    color: white; /* Optional: Set text color for better contrast */
+  }
+  

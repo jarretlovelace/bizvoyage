@@ -1,59 +1,74 @@
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { doSignOut } from '../auth';  // Use the helper function from auth.js
+import { doSignOut } from '../auth';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // Dropdown state
   const navigate = useNavigate();
 
+  // Toggle menu function
+  const toggleMenu = () => {
+    setIsOpen(!isOpen); // Toggle the state between true and false
+  };
+
+  // Close menu after selection
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   const handleSignOut = async () => {
-    console.log('Sign out button clicked'); // Debug log
+    console.log('Sign out button clicked');
     try {
-      await doSignOut();  // Use the doSignOut helper from auth.js
-      console.log('User signed out');  // Debug log to confirm sign-out
-      navigate('/signin');  // Redirect to SignIn page after sign-out
+      await doSignOut();
+      console.log('User signed out');
+      navigate('/signin');
     } catch (error) {
-      console.log('Error signing out:', error);  // Log errors
+      console.log('Error signing out:', error);
       alert('Error signing out: ', error.message);
     }
   };
 
   return (
-    <nav className="bg-red-700 p-4">
-      <div className="flex justify-between items-center">
-        <h1 className="text-white text-xl">BizVoyage</h1>
-        <div className="relative">
-          {/* Button to toggle dropdown */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-white"
-          >
-            Menu
-          </button>
+    <nav className="relative z-20 bg-red-700 text-white p-4 flex justify-between items-center">
+      <h2 className="text-xl font-bold">BizVoyage</h2>
 
-          {/* Dropdown Menu */}
-          {isOpen && (
-            <div className="absolute right-0 bg-white text-red-700 mt-2 rounded shadow-lg">
-              <Link to="/home" className="block px-4 py-2">Home</Link>
-              <Link to="/bookatrip" className="block px-4 py-2">Book A Trip</Link>
-              <Link to="/mytrips" className="block px-4 py-2">My Trips</Link>
-              <Link to="/MyBusiness" className="block px-4 py-2">My Company</Link>
-              <Link to="/Perks" className="block px-4 py-2">Perks</Link>
-              <Link to="/triphistory" className="block px-4 py-2">Trip History</Link>
-              <button
-                onClick={() => {
-                  setIsOpen(false);  // Close the dropdown before sign-out
-                  handleSignOut();   // Trigger the sign-out function
-                }}
-                className="block px-4 py-2 text-black"
-              >
-                Sign Out
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
+      {/* Menu Button */}
+      <button
+        className="text-white text-lg"
+        onClick={toggleMenu}
+      >
+        {isOpen ? 'Close Menu' : 'Menu'}
+      </button>
+
+      {/* Dropdown Menu */}
+      {isOpen && (
+        <ul
+          className="absolute right-0 top-full w-48 bg-red-800 text-white p-2 rounded-lg shadow-lg z-30 transition duration-200 ease-in-out"
+        >
+          <li onClick={closeMenu}>
+            <Link to="/home" className="block p-2 hover:text-gray-300">Home</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/bookatrip" className="block p-2 hover:text-gray-300">Book A Trip</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/mytrips" className="block p-2 hover:text-gray-300">Trips</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/mybusiness" className="block p-2 hover:text-gray-300">My Business</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/perks" className="block p-2 hover:text-gray-300">Rewards</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/triphistory" className="block p-2 hover:text-gray-300">Trip History</Link>
+          </li>
+          <li onClick={handleSignOut} className="block p-2 hover:text-gray-300 cursor-pointer">
+            Sign Out
+          </li>
+        </ul>
+      )}
     </nav>
   );
 };
