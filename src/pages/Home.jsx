@@ -93,7 +93,6 @@ const Home = () => {
     <div className="relative w-screen h-screen bg-gray-100">
       <div className="border-2 border-gray-300 rounded-lg p-4 shadow-lg">
   {/* Dashboard content goes here */}
-  <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
   {/* Add other dashboard items here */}
 </div>
 
