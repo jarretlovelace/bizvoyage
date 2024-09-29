@@ -14,6 +14,7 @@ import SignIn from './pages/SignIn';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import PrivateRoute from './components/PrivateRoute';
+import Settings from './pages/Settings';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -89,10 +90,18 @@ function App() {
           }
         />
         <Route
-          path="/profile"  // <-- This is the route for Profile
+          path="/profile"
           element={
             <PrivateRoute user={user}>
-              <Profile />  
+              <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <PrivateRoute user={user}>
+              <Settings />
             </PrivateRoute>
           }
         />
