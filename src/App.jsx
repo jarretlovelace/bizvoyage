@@ -12,6 +12,7 @@ import Perks from './pages/Perks';
 import TripHistory from './pages/TripHistory';
 import SignIn from './pages/SignIn';
 import Signup from './pages/Signup';
+import Profile from './pages/Profile';
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
@@ -84,6 +85,14 @@ function App() {
           element={
             <PrivateRoute user={user}>
               <TripHistory />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"  // <-- This is the route for Profile
+          element={
+            <PrivateRoute user={user}>
+              <Profile />  
             </PrivateRoute>
           }
         />
