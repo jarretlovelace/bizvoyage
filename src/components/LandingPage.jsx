@@ -20,7 +20,7 @@ const LandingPage = () => {
   return (
     <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
       {/* Full-Screen Welcome Section */}
-      <section className="min-h-screen flex flex-col justify-center items-center ">
+      <section className="min-h-screen flex flex-col justify-center items-center">
         {/* Header with Sign In/Sign Up buttons */}
         <header className="w-full py-4 px-8 flex justify-between items-center bg-red-700 bg-opacity-70 absolute top-0 left-0">
           <img src={logo} alt="BizVoyage Logo" className="h-12 object-contain" />
@@ -32,23 +32,26 @@ const LandingPage = () => {
 
         {/* Welcome Message in Center */}
         <div className="text-center max-w-md w-full bg-white bg-opacity-90 shadow-md p-8 rounded-md" data-aos="fade-up">
-        <h1 className="text-5xl font-thin text-red-700 mb-6">Welcome To</h1>
-        <img src={logo} alt="BizVoyage Logo" className="h-50 py-4 px-8 object-contain" />
-       
+          <h1 className="text-5xl font-thin text-red-700 mb-6">Welcome To</h1>
+          <img src={logo} alt="BizVoyage Logo" className="h-50 py-4 px-8 object-contain" />
           <p className="text-xl text-red-700 font-thin">Your destination for business travel management.</p>
         </div>
       </section>
 
-      {/* Video Section (Moved Above Perks Section) */}
+      {/* Video Section */}
       <section className="py-12 my-8 bg-black bg-opacity-60 text-white" data-aos="fade-up">
         <div className="max-w-screen-lg mx-auto text-center">
           <h2 className="text-4xl mb-6 bg-red-700 bg-opacity-70 p-4 rounded">Watch How It Works</h2>
           
           {/* Video Embed */}
           <div className="w-full h-64">
-            <video className="w-full h-full rounded-lg shadow-lg" controls>
+            <video
+              src="/BizVoyageVid.mp4"
+              autoPlay
+              className="w-full h-full rounded-lg shadow-lg"
+              controls
+            >
               <source src="/public/BizVoyageVid.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
             </video>
           </div>
         </div>
