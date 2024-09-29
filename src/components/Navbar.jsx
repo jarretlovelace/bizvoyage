@@ -1,42 +1,37 @@
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Combined imports
 import { useState } from 'react';
-import { doSignOut } from '../auth';
+import { doSignOut } from '../auth'; // Assuming `doSignOut` handles sign-out logic
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // Dropdown state
   const navigate = useNavigate();
 
   // Toggle menu function
-  const toggleMenu = () => {
-    setIsOpen(!isOpen); // Toggle the state between true and false
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   // Close menu after selection
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
+  const closeMenu = () => setIsOpen(false);
 
   const handleSignOut = async () => {
     console.log('Sign out button clicked');
     try {
       await doSignOut();
       console.log('User signed out');
-      navigate('/signin');
+      navigate('/signin'); // Redirect to sign-in page
     } catch (error) {
-      console.log('Error signing out:', error);
+      console.error('Error signing out:', error);
       alert('Error signing out: ', error.message);
     }
   };
 
   return (
     <nav className="relative z-20 bg-red-700 text-white p-4 flex items-center justify-between">
-      {/* Logo Section - Left-Aligned */}
+      {/* Logo Section */}
       <div className="flex items-center">
         <img 
-          src="/src/images/bv2.png" // Path to your logo image
+          src="/images/bv2.png" // Ensure path is correct relative to the build setup
           alt="BizVoyage Logo"
-          className="h-16 w-auto" // Adjust size as needed
+          className="h-16 w-auto"
         />
       </div>
 
@@ -45,19 +40,31 @@ const Navbar = () => {
         Welcome to BizVoyage
       </h2>
 
-      {/* Menu Button - Right-Aligned */}
-      <button
-        className="text-white text-lg"
-        onClick={toggleMenu}
-      >
-        {isOpen ? 'Close Menu' : 'Menu'}
-      </button>
+      {/* Right-aligned Buttons: Profile, Settings, and Menu */}
+      <div className="flex items-center space-x-4">
+        {/* Profile Link */}
+        <Link to="/profile" className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-800 transition">
+          Profile
+        </Link>
+
+        {/* Settings Link */}
+        <Link to="/settings" className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-800 transition">
+          Settings
+        </Link>
+
+        {/* Menu Button */}
+        <button
+          aria-expanded={isOpen}
+          className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-800 transition"
+          onClick={toggleMenu}
+        >
+          {isOpen ? 'Close Menu' : 'Menu'}
+        </button>
+      </div>
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <ul
-          className="absolute right-0 top-full w-48 bg-red-800 text-white p-2 rounded-lg shadow-lg z-30 transition duration-200 ease-in-out"
-        >
+        <ul className="absolute right-0 top-full w-48 bg-red-800 text-white p-2 rounded-lg shadow-lg z-30 transition duration-200 ease-in-out">
           <li onClick={closeMenu}>
             <Link to="/home" className="block p-2 hover:text-gray-300">Home</Link>
           </li>
