@@ -91,9 +91,6 @@ function SignUp() {
             <video
               src="/BizVoyage_Registration_Guide.mp4"  
               autoPlay
-              className="w-full h-auto rounded-lg"
-              muted
-              loop
             />
           </div>
         </div>

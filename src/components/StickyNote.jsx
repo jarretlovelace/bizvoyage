@@ -1,18 +1,16 @@
 import React from 'react';
 
 const StickyNote = ({ tripDetails }) => {
-    if (!tripDetails) {
-        return <div className="hidden" />;
-    }
+    if (!tripDetails) return null;
 
     return (
-        <div className="sticky-note">
-            <h3>Trip Details</h3>
+        <div className="w-64 p-4 bg-yellow-300 rounded-md shadow-lg sticky-note">
+            <h3 className="font-bold text-lg mb-2">Trip Summary</h3>
             <p><strong>Dates:</strong> {tripDetails.dates}</p>
-            <p><strong>Budget:</strong> {tripDetails.budget}</p>
-            <p><strong>Actual Expenses:</strong> {tripDetails.actualExpenses}</p>
+            <p><strong>Budget:</strong> ${tripDetails.budget}</p>
+            <p><strong>Money Spent:</strong> ${tripDetails.spent}</p>
             <p><strong>Reason:</strong> {tripDetails.reason}</p>
-            <p><strong>Team Members:</strong> {tripDetails.teamMembers}</p>
+            <p><strong>Coworkers:</strong> {tripDetails.coworkers.join(', ')}</p>
             <p><strong>Notes:</strong> {tripDetails.notes}</p>
         </div>
     );

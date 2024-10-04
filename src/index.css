@@ -2,24 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'leaflet/dist/leaflet.css';
+
+/* Landing Page Background */
 .bg-landingpage {
     background-image: url('/images/bv4.jpg');
     background-size: cover;
     background-position: center;
 }
+
+/* Home Page Background */
 .bg-home {
-    background-image: url('images/bizhomepage.jpg');
+    background-image: url('/images/bizhomepage.jpg');
     background-size: cover;
     background-position: center;
 }
+
+/* Login Page Background */
 .bg-login {
     background-image: url('/images/biztravplane.jpg');
     background-size: cover;
     background-position: center;
 }
-.bg-Signup {
-    background-image: url('/public/images/Signupbgimage.jpg');
+
+/* Signup Page Background */
+.bg-signup {
+    background-image: url('./images/image16.jpg');
     background-size: cover;
     background-position: center;
 }
 
+/* Background board image */
+.bg-board-pattern {
+    background-image: url('./images/pic1.jpg'); /* Replace with your board background */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Animation: Fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animation: Slide-down */
+@keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-down {
+    animation: slideDown 0.5s ease-in-out;
+}
