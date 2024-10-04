@@ -37,7 +37,7 @@ const BookTrip = () => {
       {/* Hero Section */}
       <div className="w-full bg-cover bg-center h-64" style={{ backgroundImage: `url(/src/images/ai_image4.jpeg)` }}>
         <div className="flex flex-col items-center justify-center h-full bg-black bg-opacity-50">
-          <h1 className="text-white text-4xl font-bold">Book Your Next Business Trip</h1>
+          <h1 className="text-white text-4xl font-bold">Book a Trip, Save the World—Okay, Maybe Just Your Sanity</h1>
         </div>
       </div>
 

@@ -36,8 +36,8 @@ const Navbar = () => {
       </div>
 
       {/* Centered Title */}
-      <h2 className="absolute left-1/2 transform -translate-x-1/2 text-4xl font-bold text-center">
-        Welcome to BizVoyage
+      <h2 className="absolute left-1/2 transform -translate-x-1/2 text-4xl font-bold text-center transition-transform duration-300 ease-in-out hover:scale-110">
+      <span className="transition-transform duration-500 ease-in-out transform scale-100 hover:scale-125">BizVoyage</span>
       </h2>
 
       {/* Right-aligned Buttons: Profile, Settings, and Menu */}

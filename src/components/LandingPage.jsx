@@ -34,7 +34,7 @@ const LandingPage = () => {
         <div className="text-center max-w-md w-full bg-white bg-opacity-90 shadow-md p-8 rounded-md" data-aos="fade-up">
           <h1 className="text-5xl font-thin text-red-700 mb-6">Welcome To</h1>
           <img src={logo} alt="BizVoyage Logo" className="h-50 py-4 px-8 object-contain" />
-          <p className="text-xl text-red-700 font-thin">Your destination for business travel management.</p>
+          <p className="text-xl text-red-700 font-thin">Need a business trip rescue? Call us your travel superhero—minus the cape.</p>
         </div>
       </section>
 
@@ -60,7 +60,7 @@ const LandingPage = () => {
       {/* Perks Section */}
       <section className="py-20 my-8 bg-black bg-opacity-60 text-white" data-aos="fade-up">
         <div className="max-w-screen-lg mx-auto text-center">
-          <h2 className="text-4xl mb-10 bg-red-700 bg-opacity-70 p-4 rounded">Exclusive Features</h2>
+          <h2 className="text-4xl mb-10 bg-red-700 bg-opacity-70 p-4 rounded">Features So Exclusive, They Might Just Have Their Own Fan Club</h2>
           
           {/* Grid layout with image and features */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">

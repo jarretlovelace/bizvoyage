@@ -12,13 +12,13 @@ const Perks = () => {
   return (
     <div className="p-8 max-w-3xl mx-auto">
       <header className="text-center mb-8">
-        <h1 className="bg-gray-400 p-4 rounded-lg text-3xl text-red-700 font-bold">Your Perks</h1>
-        <p className="text-gray-600">Explore your perks and see what you can redeem!</p>
+        <h1 className="bg-red-600 p-2 rounded-lg text-3xl text-white font-bold">Your Perks</h1>
+        <p className="bg-red-600 p-3 text-xl rounded-lg font-semibold text-white">Where Loyalty Pays Off (Unlike That Gym Membership)</p>
       </header>
 
       <section className="mb-8">
         <h2 className="text-2xl text-red-700 font-mono font-semibold">Points Balance</h2>
-        <div className="bg-red-800 p-4 rounded-lg text-center">
+        <div className="bg-red-600 p-4 rounded-lg text-center">
           <p className="text-2xl text-white font-bold">{userPoints} Points</p>
         </div>
       </section>
