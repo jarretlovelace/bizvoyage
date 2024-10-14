@@ -14,10 +14,14 @@ const Weather = () => {
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`
         );
+
+        if (!response.ok) {
+          throw new Error(response.status === 404 ? 'City not found' : 'An error occurred');
+        }
+
         const data = await response.json();
 
         if (data && data.list) {
-          // Filter the forecast to get one entry per day (e.g., at noon)
           const dailyForecast = data.list.filter((entry) =>
             entry.dt_txt.includes('12:00:00')
           );
@@ -30,7 +34,7 @@ const Weather = () => {
         setLoading(false);
       } catch (error) {
         console.error('Error fetching weather data:', error);
-        setError('Could not load weather data');
+        setError(error.message);
         setLoading(false);
       }
     };
@@ -47,12 +51,12 @@ const Weather = () => {
       <div className="grid grid-cols-5 gap-4">
         {forecast.map((day) => (
           <div key={day.dt} className="weather-day bg-red-600 p-4 rounded-lg">
-            <p className="font-bold text-white ">{new Date(day.dt_txt).toLocaleDateString('en-US', { weekday: 'long' })}</p>
+            <p className="font-bold text-white">{new Date(day.dt_txt).toLocaleDateString('en-US', { weekday: 'long' })}</p>
             <img
               src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
               alt={day.weather[0].description}
             />
-            <p c>{Math.round(day.main.temp)}°C</p>
+            <p>{Math.round(day.main.temp)}°C</p>
             <p>{day.weather[0].description}</p>
           </div>
         ))}

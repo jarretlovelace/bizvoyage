@@ -5,15 +5,16 @@ import logo from '../images/bv2.png';
 import backgroundImage from '../images/image5.jpeg';  // Main background image
 import featuresImage from '../images/ai1.png'; // Features section image
 import testimonialImage from '../images/ai2.png'; // Testimonial image
+import '../pages/style/LandingPage.css'; // Import a separate CSS file for keyframes and responsive styles
 
 const LandingPage = () => {
   // Initialize AOS with custom options
   useEffect(() => {
     AOS.init({
       duration: 1000,
-      easing: 'ease-in-out', // Custom easing
-      once: true, // Only animate once
-      mirror: false, // Do not repeat animations while scrolling back up
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false,
     });
   }, []);
 
@@ -38,38 +39,31 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="py-12 my-8 bg-black bg-opacity-60 text-white" data-aos="fade-up">
-        <div className="max-w-screen-lg mx-auto text-center">
-          <h2 className="text-4xl mb-6 bg-red-700 bg-opacity-70 p-4 rounded">Watch How It Works</h2>
-          
-          {/* Video Embed */}
-          <div className="w-full h-64">
-            <video
-              src="/BizVoyageVid.mp4"
-              autoPlay
-              className="w-full h-full rounded-lg shadow-lg"
-              controls
-            >
-              <source src="/public/BizVoyageVid.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
-      </section>
+      {/* Video Section - Parachuting Effect */}
+      <div
+        className="fixed left-4 w-[550px] h-[300px] border-4 border-red-700 rounded-lg shadow-lg z-20 video-parachute"
+        style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}
+      >
+        <video
+          src="/BizVoyageVid.mp4"
+          autoPlay
+          loop={false}
+          className="w-full h-full rounded-lg"
+          controls
+          muted
+        >
+          <source src="/public/BizVoyageVid.mp4" type="video/mp4" />
+        </video>
+      </div>
 
       {/* Perks Section */}
       <section className="py-20 my-8 bg-black bg-opacity-60 text-white" data-aos="fade-up">
         <div className="max-w-screen-lg mx-auto text-center">
           <h2 className="text-4xl mb-10 bg-red-700 bg-opacity-70 p-4 rounded">Features So Exclusive, They Might Just Have Their Own Fan Club</h2>
-          
-          {/* Grid layout with image and features */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-            {/* Features Image */}
             <div className="w-full">
               <img src={featuresImage} alt="Features" className="rounded-lg shadow-lg object-cover w-full" />
             </div>
-            
-            {/* Features List */}
             <div>
               <div className="grid grid-cols-1 gap-6">
                 <div className="bg-white bg-opacity-80 p-6 rounded-lg">
@@ -94,21 +88,16 @@ const LandingPage = () => {
       <section className="py-12 my-8 bg-black bg-opacity-60 text-white" data-aos="fade-up">
         <div className="max-w-screen-lg mx-auto text-center">
           <h2 className="text-4xl mb-6 bg-red-700 bg-opacity-70 p-4 rounded">What Our Clients Say</h2>
-
-          {/* Testimonials */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div className="bg-white bg-opacity-80 p-6 rounded-lg">
-              <p className="text-lg font-semibold text-red-700 mb-4">"BizVoyage has simplified everything! From planning trips to managing expenses, I can’t imagine going back to our old methods. Highly recommend for any business!"</p>
+              <p className="text-lg font-semibold text-red-700 mb-4">"BizVoyage has simplified everything! Highly recommend for any business!"</p>
               <p className="text-md font-bold">- Jane Smith, CFO of Tech Innovators</p>
             </div>
-
             <div className="bg-white bg-opacity-80 p-6 rounded-lg">
-              <p className="text-lg font-semibold text-red-700 mb-4">"Managing corporate travel has never been easier! BizVoyage has saved us countless hours and made travel planning stress-free. I wouldn’t use anything else!"</p>
+              <p className="text-lg font-semibold text-red-700 mb-4">"Managing corporate travel has never been easier! I wouldn’t use anything else!"</p>
               <p className="text-md font-bold">- Alex Johnson, Operations Manager at Global Solutions</p>
             </div>
           </div>
-
-          {/* Centered image for testimonials */}
           <div className="flex justify-center mb-6">
             <img src={testimonialImage} alt="Testimonial" className="rounded-lg shadow-lg object-cover w-3/4 md:w-1/2" />
           </div>

@@ -1,9 +1,17 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+// src/App.js
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth'; 
 import { auth } from './firebase'; 
+
+// Import components
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
+import PrivateRoute from './components/PrivateRoute';
+import BookTrip from './components/BookTrip';
+import TripResults from './components/TripResults';
+
+// Import pages
 import Home from './pages/Home';
 import BookATrip from './pages/BookATrip';
 import MyTrips from './pages/MyTrips';
@@ -13,10 +21,9 @@ import TripHistory from './pages/TripHistory';
 import SignIn from './pages/SignIn';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
-import PrivateRoute from './components/PrivateRoute';
 import Settings from './pages/Settings';
 
-function App() {
+const App = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -105,6 +112,25 @@ function App() {
             </PrivateRoute>
           }
         />
+        
+        {/* New Routes for BookTrip and TripResults */}
+        <Route 
+          path="/book-a-trip" 
+          element={
+            <PrivateRoute user={user}>
+              <BookTrip />
+            </PrivateRoute>
+          } 
+        />
+        <Route 
+          path="/trip-results" 
+          element={
+            <PrivateRoute user={user}>
+              <TripResults />
+            </PrivateRoute>
+          } 
+        />
+
       </Routes>
     </Router>
   );
