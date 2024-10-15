@@ -7,6 +7,19 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <script type="module" src="/src/main.jsx">
+       async function getTravelData() {
+      try {
+        const response = await fetch('http://localhost:3000/api/travel/fetchTravelData', {
+          method: 'POST'
+        });
+        
+        const data = await response.json();
+        document.getElementById('results').innerText = JSON.stringify(data, null, 2);
+      } catch (error) {
+        console.error('Error fetching travel data:', error);
+      }
+    }
+  </script>
+</body>
 </html>
