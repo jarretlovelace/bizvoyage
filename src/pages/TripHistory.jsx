@@ -1,56 +1,83 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import MapComponent from '../components/MapComponent';
+import StickyNote from '../components/StickyNote';
+import AnimatedCharacter from '../components/AnimatedCharacter';
+import AddLocationForm from '../components/AddLocationForm';
 
-const TripResults = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const destination = searchParams.get('destination');
-  const startDate = searchParams.get('startDate');
-  const endDate = searchParams.get('endDate');
-  const flight = searchParams.get('flight') === 'true';
-  const hotel = searchParams.get('hotel') === 'true';
-  const carRental = searchParams.get('carRental') === 'true';
+const TripHistory = () => {
+    const [selectedTrip, setSelectedTrip] = useState(null);
+    const [pins, setPins] = useState([
+        // Sample trip 1 - New York City
+        {
+            id: 1,
+            location: { lat: 40.7128, lng: -74.0060 }, // New York City, NY
+            tripDetails: {
+                dates: "2024-01-10 to 2024-01-15",
+                budget: 2000,
+                spent: 1800,
+                reason: "Client Meetings",
+                coworkers: ["John Doe", "Jane Smith"],
+                notes: "Had successful meetings with two new clients. Stayed at Hilton Midtown."
+            }
+        },
+        // Sample trip 2 - Los Angeles
+        {
+            id: 2,
+            location: { lat: 34.0522, lng: -118.2437 }, // Los Angeles, CA
+            tripDetails: {
+                dates: "2024-02-05 to 2024-02-08",
+                budget: 1500,
+                spent: 1300,
+                reason: "Tech Conference",
+                coworkers: ["Alice Johnson", "Mark Brown"],
+                notes: "Attended Tech Summit 2024. Excellent networking opportunity."
+            }
+        },
+    ]);
+    const [showForm, setShowForm] = useState(false); // State for toggling form visibility
 
-  // State for storing fetched trip results
-  const [tripResults, setTripResults] = useState([]);
+    const handlePinClick = (tripDetails) => {
+        setSelectedTrip(tripDetails);
+    };
 
-  // Fetch the trip results based on search parameters
-  useEffect(() => {
-    fetch(`/api/trips?destination=${destination}&startDate=${startDate}&endDate=${endDate}&flight=${flight}&hotel=${hotel}&carRental=${carRental}`)
-      .then(response => response.json())
-      .then(data => {
-        setTripResults(data);
-      })
-      .catch(error => console.error('Error fetching trips:', error));
-  }, [destination, startDate, endDate, flight, hotel, carRental]);
+    const addNewLocation = (newLocation) => {
+        setPins([...pins, newLocation]);
+        setShowForm(false); // Hide the form after adding a new location
+    };
 
-  return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-red-700 mb-6">Your Search Results</h2>
-        {tripResults.length > 0 ? (
-          <ul className="grid grid-cols-1 gap-6">
-            {tripResults.map((trip, index) => (
-              <li key={index} className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-800">{trip.destination}</h3>
-                <p className="text-gray-600 mt-2">
-                  <strong>Start Date:</strong> {trip.startDate}
-                </p>
-                <p className="text-gray-600 mt-1">
-                  <strong>End Date:</strong> {trip.endDate}
-                </p>
-                <p className="text-gray-600 mt-1">
-                  <strong>Price:</strong> ${trip.price}
-                </p>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-gray-600">No trips found for your search criteria.</p>
-        )}
-      </div>
-    </div>
-  );
+    const toggleFormVisibility = () => {
+        setShowForm(!showForm);
+    };
+
+    return (
+        <div className="relative w-full h-screen bg-cover bg-center bg-board-pattern p-8">
+            {/* Animated background board */}
+            <div className="bg-white bg-opacity-70 p-6 rounded-lg shadow-lg max-w-6xl mx-auto animate-fade-in">
+                {/* Top Section: Map and Character */}
+                <div className="relative flex flex-col items-center justify-start mb-4">
+                    <MapComponent pins={pins} onPinClick={handlePinClick} />
+                    <AnimatedCharacter className="absolute z-10 bottom-0 right-10" />
+                </div>
+                {/* Show trip details in sticky note */}
+                {selectedTrip && (
+                    <StickyNote tripDetails={selectedTrip} />
+                )}
+                {/* Button to show/hide the form with animation */}
+                <button
+                    className="bg-blue-500 text-white p-2 rounded-md shadow-md mb-4 transition-transform duration-500 transform hover:scale-105"
+                    onClick={toggleFormVisibility}
+                >
+                    {showForm ? 'Cancel' : '+ Add Trip'}
+                </button>
+                {/* Conditionally render the form with animation */}
+                {showForm && (
+                    <div className="animate-slide-down">
+                        <AddLocationForm onAddLocation={addNewLocation} />
+                    </div>
+                )}
+            </div>
+        </div>
+    );
 };
 
-export default TripResults;
+export default TripHistory;
