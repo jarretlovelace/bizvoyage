@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FiMapPin } from 'react-icons/fi';
-import { BsFillHouseFill, BsFillCalendarFill } from 'react-icons/bs';
 
 const BookTrip = () => {
   const navigate = useNavigate();
@@ -25,11 +24,28 @@ const BookTrip = () => {
     });
   };
 
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    setTripData({
+      ...tripData,
+      [name]: checked,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Pass trip data to results page or API
-    console.log('Trip search:', tripData);
-    navigate('/trip-results'); // Redirect to results page
+    // Pass search parameters to the TripResults page via the URL query string
+    const query = new URLSearchParams({
+      destination: tripData.destination,
+      startDate: tripData.startDate,
+      endDate: tripData.endDate,
+      flight: tripData.flight,
+      hotel: tripData.hotel,
+      carRental: tripData.carRental,
+    }).toString();
+
+    // Navigate to TripResults page with the search parameters
+    navigate(`/trip-results?${query}`);
   };
 
   return (
@@ -98,7 +114,7 @@ const BookTrip = () => {
                 type="checkbox"
                 name="flight"
                 checked={tripData.flight}
-                onChange={(e) => setTripData({ ...tripData, flight: e.target.checked })}
+                onChange={handleCheckboxChange}
               />
               <span>Flights</span>
             </label>
@@ -107,7 +123,7 @@ const BookTrip = () => {
                 type="checkbox"
                 name="hotel"
                 checked={tripData.hotel}
-                onChange={(e) => setTripData({ ...tripData, hotel: e.target.checked })}
+                onChange={handleCheckboxChange}
               />
               <span>Hotels</span>
             </label>
@@ -116,7 +132,7 @@ const BookTrip = () => {
                 type="checkbox"
                 name="carRental"
                 checked={tripData.carRental}
-                onChange={(e) => setTripData({ ...tripData, carRental: e.target.checked })}
+                onChange={handleCheckboxChange}
               />
               <span>Car Rentals</span>
             </label>
@@ -133,40 +149,6 @@ const BookTrip = () => {
             </button>
           </div>
         </form>
-      </div>
-
-      {/* Explore Section */}
-      <div className="max-w-6xl mx-auto mt-16">
-        <h3 className="text-3xl font-semibold mb-6">Explore Popular Destinations</h3>
-        {/* Destination Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Card 1 */}
-          <div className="relative bg-white shadow-md rounded-md overflow-hidden">
-            <img src="/src/images/NYC.jpg" alt="Destination" className="w-full h-48 object-cover" />
-            <div className="p-4">
-              <h4 className="text-xl font-bold">New York City</h4>
-              <p className="text-gray-600 mt-2">Explore the city that never sleeps!</p>
-            </div>
-          </div>
-
-          {/* Card 2 */}
-          <div className="relative bg-white shadow-md rounded-md overflow-hidden">
-            <img src="/src/images/paris.jpeg" alt="Destination" className="w-full h-48 object-cover" />
-            <div className="p-4">
-              <h4 className="text-xl font-bold">Paris</h4>
-              <p className="text-gray-600 mt-2">Discover the romance of the City of Light.</p>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="relative bg-white shadow-md rounded-md overflow-hidden">
-            <img src="/src/images/sydney.jpeg" alt="Destination" className="w-full h-48 object-cover" />
-            <div className="p-4">
-              <h4 className="text-xl font-bold"></h4>
-              <p className="text-gray-600 mt-2">Experience the vibrant energy of .</p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

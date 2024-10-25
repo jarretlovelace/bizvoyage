@@ -1,68 +1,56 @@
-import React, { useState } from 'react';
-import MapComponent from '../components/MapComponent';
-import StickyNote from '../components/StickyNote';
-import AnimatedCharacter from '../components/AnimatedCharacter';
-import AddLocationForm from '../components/AddLocationForm';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-const TripHistory = () => {
-    const [selectedTrip, setSelectedTrip] = useState(null);
-    const [pins, setPins] = useState([]);
-    const [showForm, setShowForm] = useState(false); // State for toggling form visibility
+const TripResults = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const destination = searchParams.get('destination');
+  const startDate = searchParams.get('startDate');
+  const endDate = searchParams.get('endDate');
+  const flight = searchParams.get('flight') === 'true';
+  const hotel = searchParams.get('hotel') === 'true';
+  const carRental = searchParams.get('carRental') === 'true';
 
-    const handlePinClick = (tripDetails) => {
-        setSelectedTrip(tripDetails);
-    };
+  // State for storing fetched trip results
+  const [tripResults, setTripResults] = useState([]);
 
-    const addNewLocation = (newLocation) => {
-        setPins([...pins, newLocation]);
-        setShowForm(false); // Hide the form after adding a new location
-    };
+  // Fetch the trip results based on search parameters
+  useEffect(() => {
+    fetch(`/api/trips?destination=${destination}&startDate=${startDate}&endDate=${endDate}&flight=${flight}&hotel=${hotel}&carRental=${carRental}`)
+      .then(response => response.json())
+      .then(data => {
+        setTripResults(data);
+      })
+      .catch(error => console.error('Error fetching trips:', error));
+  }, [destination, startDate, endDate, flight, hotel, carRental]);
 
-    const toggleFormVisibility = () => {
-        setShowForm(!showForm);
-    };
-
-    return (
-        <div className="relative w-full h-screen bg-cover bg-center bg-board-pattern p-8">
-            {/* Animated background board */}
-            <div className="bg-red-600 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-6xl mx-auto animate-fade-in">
-                
-                {/* Title Section with Animation */}
-                <div className="text-center mb-6">
-                    <h1 className="text-5xl font-bold text-white animate-pulse">Your Greatest Hits</h1>
-                    <p className="mt-2 text-lg text-white animate-fade-in">
-                        A Timeline of Business, Flights, and Questionable Room Service
-                    </p>
-                </div>
-                
-                {/* Top Section: Map and Character */}
-                <div className="relative flex flex-col items-center justify-start mb-4">
-                    <MapComponent pins={pins} onPinClick={handlePinClick} />
-                    <AnimatedCharacter className="absolute z-10 bottom-0 right-10" />
-                </div>
-
-                {/* Show trip details in sticky note */}
-                {selectedTrip && (
-                    <StickyNote tripDetails={selectedTrip} />
-                )}
-                
-                {/* Button to show/hide the form with animation */}
-                <button
-                    className="bg-blue-500 text-white p-2 rounded-md shadow-md mb-4 transition-transform duration-500 transform hover:scale-105"
-                    onClick={toggleFormVisibility}
-                >
-                    {showForm ? 'Cancel' : '+ Add Trip'}
-                </button>
-
-                {/* Conditionally render the form with animation */}
-                {showForm && (
-                    <div className="animate-slide-down">
-                        <AddLocationForm onAddLocation={addNewLocation} />
-                    </div>
-                )}
-            </div>
-        </div>
-    );
+  return (
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl mx-auto">
+        <h2 className="text-3xl font-bold text-red-700 mb-6">Your Search Results</h2>
+        {tripResults.length > 0 ? (
+          <ul className="grid grid-cols-1 gap-6">
+            {tripResults.map((trip, index) => (
+              <li key={index} className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-bold text-gray-800">{trip.destination}</h3>
+                <p className="text-gray-600 mt-2">
+                  <strong>Start Date:</strong> {trip.startDate}
+                </p>
+                <p className="text-gray-600 mt-1">
+                  <strong>End Date:</strong> {trip.endDate}
+                </p>
+                <p className="text-gray-600 mt-1">
+                  <strong>Price:</strong> ${trip.price}
+                </p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-600">No trips found for your search criteria.</p>
+        )}
+      </div>
+    </div>
+  );
 };
 
-export default TripHistory;
+export default TripResults;

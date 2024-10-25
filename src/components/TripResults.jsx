@@ -1,52 +1,78 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const TripResults = () => {
   const location = useLocation();
-  const navigate = useNavigate();
-  const travelData = location.state?.travelData; // Define travelData before using it
+  const searchParams = new URLSearchParams(location.search);
+  const destination = searchParams.get('destination');
+  const startDate = searchParams.get('startDate');
+  const endDate = searchParams.get('endDate');
+  const flight = searchParams.get('flight') === 'true';
+  const hotel = searchParams.get('hotel') === 'true';
+  const carRental = searchParams.get('carRental') === 'true';
 
-  console.log('Received travel data:', travelData); // Log after travelData is defined
+  // State for storing fetched trip results
+  const [tripResults, setTripResults] = useState([]);
+  const [error, setError] = useState(null);
 
-  if (!travelData) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center p-8 bg-white shadow-md rounded-md">
-          <h2 className="text-2xl font-bold mb-4">Well, this is awkward.</h2>
-          <p className="mb-8">
-            No results found. Try tweaking your search.
-          </p>
-          <button 
-            onClick={() => navigate('/book-a-trip')}
-            className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700"
-          >
-            Go back to search
-          </button>
-        </div>
-      </div>
-    );
-  }
+  // Fetch the trip results based on search parameters
+  useEffect(() => {
+    axios.get(`/api/trips`, {
+      params: {
+        destination,
+        startDate,
+        endDate,
+        flight,
+        hotel,
+        carRental,
+      },
+    })
+      .then((response) => {
+        const data = response.data;
+        if (Array.isArray(data)) {
+          setTripResults(data); // If it's an array, set it as is
+        } else {
+          setTripResults([]); // If it's not an array, default to an empty array
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching trips:', error.message);
+        setError('Failed to fetch trips. Please try again.');
+      });
+  }, [destination, startDate, endDate, flight, hotel, carRental]);
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-4xl font-bold text-red-700 mb-8">Trip Results</h1>
-      {/* Render travelData details */}
-      {travelData.airlineTickets && travelData.airlineTickets.length > 0 && (
-        <section>
-          <h2 className="text-2xl font-bold mb-4">Airline Tickets</h2>
-          {travelData.airlineTickets.map((ticket, index) => (
-            <div key={index} className="bg-white p-4 rounded-lg shadow mb-4">
-              <p><strong>Airline:</strong> {ticket.airline}</p>
-              <p><strong>Price:</strong> {ticket.price}</p>
-              <p><strong>Departure:</strong> {ticket.departureTime}</p>
-              <p><strong>Arrival:</strong> {ticket.arrivalTime}</p>
-              <p><strong>Duration:</strong> {ticket.duration}</p>
-              <p><strong>Layovers:</strong> {ticket.layovers}</p>
-            </div>
-          ))}
-        </section>
-      )}
-      {/* Repeat similar sections for hotels, Airbnb options, and car rentals */}
+      {/* Results Section */}
+      <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl mx-auto">
+        <h2 className="text-3xl font-bold text-red-700 mb-6">Your Search Results</h2>
+
+        {/* Display error if there is any */}
+        {error && <p className="text-red-500">{error}</p>}
+
+        {/* Conditional rendering based on tripResults */}
+        {Array.isArray(tripResults) && tripResults.length > 0 ? (
+          <ul className="grid grid-cols-1 gap-6">
+            {tripResults.map((trip, index) => (
+              <li key={index} className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-bold text-gray-800">{trip.destination}</h3>
+                <p className="text-gray-600 mt-2">
+                  <strong>Start Date:</strong> {trip.startDate}
+                </p>
+                <p className="text-gray-600 mt-1">
+                  <strong>End Date:</strong> {trip.endDate}
+                </p>
+                <p className="text-gray-600 mt-1">
+                  <strong>Price:</strong> ${trip.price}
+                </p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          !error && <p className="text-gray-600">No trips found for your search criteria.</p>
+        )}
+      </div>
     </div>
   );
 };
