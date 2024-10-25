@@ -5,8 +5,8 @@ import logo from '../images/bv2.png';
 import backgroundImage from '../images/image5.jpeg';  // Main background image
 import featuresImage from '../images/ai1.png'; // Features section image
 import testimonialImage from '../images/ai2.png'; // Testimonial image
-import videoMp4 from '/src/BizVoyageVid.mp4'; // Import video
-import videoWebm from '/src/BizVoyage_Experience.mp4'; // Fallback video
+import videoMp4 from '/src/videos/BizVoyageVid.mp4'; // Import video
+import videoWebm from '/src/videos/BizVoyage_Experience.mp4'; // Fallback video
 import '../pages/style/LandingPage.css'; // Import a separate CSS file for keyframes and responsive styles
 
 const LandingPage = () => {

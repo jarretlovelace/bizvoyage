@@ -89,7 +89,7 @@ function SignUp() {
         <div className="relative lg:w-1/3 w-full flex justify-center mb-6 lg:mb-0 lg:mr-8">
           <div className="bg-red-500 w-full h-auto p-4 rounded-lg flex justify-center items-center">
             <video
-              src="/BizVoyage_Registration_Guide.mp4"  
+              src="/src/videos/BizVoyage_Registration_Guide.mp4"  
               autoPlay
             />
           </div>
