@@ -25,30 +25,33 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="relative z-20 bg-red-700 text-white p-4 flex items-center justify-between">
+    <nav className="relative z-20 bg-red-800 text-white p-4 flex items-center justify-between">
       {/* Logo Section */}
-      <div className="flex items-center">
+      <div className="flex items-stretch">
         <img 
           src="/images/bv2.png" // Ensure path is correct relative to the build setup
           alt="BizVoyage Logo"
-          className="h-16 w-auto"
+          className="h-20 w-auto"
         />
       </div>
 
-      {/* Centered Title */}
-      <h2 className="absolute left-1/2 transform -translate-x-1/2 text-4xl font-bold text-center transition-transform duration-300 ease-in-out hover:scale-110">
-      <span className="transition-transform duration-500 ease-in-out transform scale-100 hover:scale-125">BizVoyage</span>
-      </h2>
-
       {/* Right-aligned Buttons: Profile, Settings, and Menu */}
       <div className="flex items-center space-x-4">
+       {/* HQ Link */}
+       <Link to="/HQ" className="px-1 py-1 text-white  hover:bg-red-800 transition">
+          HQ
+        </Link>
+        {/* Dashboard Link */}
+          <Link to="/dashboard" className="px-1 py-1 text-white  hover:bg-red-800 transition">
+          Dashboard
+        </Link>
         {/* Profile Link */}
-        <Link to="/profile" className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-800 transition">
+        <Link to="/profile" className="px-1 py-1 text-white  hover:bg-red-800 transition">
           Profile
         </Link>
 
         {/* Settings Link */}
-        <Link to="/settings" className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-800 transition">
+        <Link to="/settings" className="px-1 py-1 text-white hover:bg-red-800 transition">
           Settings
         </Link>
 
@@ -66,7 +69,7 @@ const Navbar = () => {
       {isOpen && (
         <ul className="absolute right-0 top-full w-48 bg-red-800 text-white p-2 rounded-lg shadow-lg z-30 transition duration-200 ease-in-out">
           <li onClick={closeMenu}>
-            <Link to="/home" className="block p-2 hover:text-gray-300">Home</Link>
+            <Link to="/Dashboard" className="block p-2 hover:text-gray-300">Dashboard</Link>
           </li>
           <li onClick={closeMenu}>
             <Link to="/bookatrip" className="block p-2 hover:text-gray-300">Book A Trip</Link>

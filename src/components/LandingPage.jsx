@@ -72,24 +72,22 @@ const LandingPage = () => {
         </div>
 
         {/* Features Section */}
-        <section className="py-20 my-8 bg-black bg-opacity-60 text-white" data-aos="fade-up">
-          <div className="max-w-screen-lg mx-auto text-center">
-            <h2 className="text-4xl mb-10 bg-red-700 bg-opacity-70 p-4 rounded">
+        <section className="py-10 my-8 bg-black bg-opacity-80 text-black" data-aos="fade-up">
+          <div className="min-w-screen-xlg mx-auto text-center">
+            <h2 className="text-4xl text-white font-bold file:mb-10 bg-red-700 p-2 ">
               Features So Exclusive, They Might Just Have Their Own Fan Club
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-              <div className="w-full">
-                <img
-                  src={featuresImage}
-                  alt="Features section showing AI capabilities"
-                  className="rounded-lg shadow-lg object-cover w-full"
-                />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 items-center">
+              <div className="w-max">
+                
               </div>
               <div>
                 <div className="grid grid-cols-1 gap-6">
-                  <div className="bg-white bg-opacity-80 p-6 rounded-lg">
-                    <h3 className="text-xl font-bold text-red-700 mb-2">Effortless Trip Planning</h3>
+                  <div className="bg-white bg-opacity-80 p-6
+                   rounded-lg">
+                    <h3 className="text-2xl font-bold text-red-700 mb-0">Effortless Trip Planning</h3>
                     <p>Plan and book your business trips in minutes with a seamless experience.</p>
+                    
                   </div>
                   <div className="bg-white bg-opacity-80 p-10 rounded-lg">
                     <h3 className="text-xl font-bold text-red-700 mb-2">Real-Time Expense Tracking</h3>

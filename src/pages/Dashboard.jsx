@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import './style/Home.css';
+import './style/Dashboard.css';
 import Weather from '../components/Weather';
 import logo from '../images/bv2.png';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ import 'aos/dist/aos.css';
 
 const localizer = momentLocalizer(moment);
 
-const Home = () => {
+const Dashboard = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [events, setEvents] = useState([
@@ -174,4 +174,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;

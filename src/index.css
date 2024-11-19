@@ -11,9 +11,9 @@
     background-position: center;
 }
 
-/* Home Page Background */
-.bg-home {
-    background-image: url('/images/bizhomepage.jpg');
+/* Dashboard Page Background */
+.bg-Dashboard {
+    background-image: url('/images/bizDashboardpage.jpg');
     background-size: cover;
     background-position: center;
 }

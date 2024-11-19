@@ -18,7 +18,7 @@ const Header = () => {
 
   const handleLogoClick = () => {
     if (userLoggedIn) {
-      navigate('/home');  // Go to homepage if signed in
+      navigate('/Dashboard');  // Go to Dashboardpage if signed in
     } else {
       navigate('/landingpage');  // Otherwise, go to the landing page
     }
@@ -36,7 +36,7 @@ const Header = () => {
       <div className="flex items-center space-x-4">
         {userLoggedIn ? (
           <>
-            <Link to="/home" className="hover:text-red-500">Home</Link>
+            <Link to="/Dashboard" className="hover:text-red-500">Dashboard</Link>
             <button onClick={handleSignOut} className="bg-red-500 px-3 py-2 rounded hover:bg-red-500">Sign Out</button>
           </>
         ) : (

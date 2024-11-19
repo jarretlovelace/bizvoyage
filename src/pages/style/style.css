@@ -61,3 +61,12 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+@font-face {
+    font-family: 'Skyfont-NonCommercial';
+    src: url('./assets/fonts/Skyfont-NonCommercial.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Skyfont-NonCommercial', sans-serif;
+}

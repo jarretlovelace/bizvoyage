@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth'; 
@@ -12,7 +11,8 @@ import BookTrip from './components/BookTrip';
 import TripResults from './components/TripResults';
 
 // Import pages
-import Home from './pages/Home';
+import Hq from'./pages/Hq';
+import Dashboard from './pages/Dashboard';
 import BookATrip from './pages/BookATrip';
 import MyTrips from './pages/MyTrips';
 import MyBusiness from './pages/MyBusiness';
@@ -44,18 +44,26 @@ const App = () => {
     <Router>
       {user && <Navbar />}
       <Routes>
-        <Route path="/" element={user ? <Navigate to="/home" /> : <LandingPage />} />
-        <Route path="/signin" element={!user ? <SignIn /> : <Navigate to="/home" />} />
-        <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/home" />} />
+        <Route path="/" element={user ? <Navigate to="/Hq" /> : <LandingPage />} />
+        <Route path="/signin" element={!user ? <SignIn /> : <Navigate to="/Hq" />} />
+        <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/Hq" />} />
 
         <Route
-          path="/home"
+          path="/Dashboard"
           element={
             <PrivateRoute user={user}>
-              <Home />
+              <Dashboard />
             </PrivateRoute>
           }
         />
+        <Route
+          path="Hq"
+          element={
+            <PrivateRoute user={user}>
+              <Hq />
+            </PrivateRoute>
+          }
+          />
         <Route
           path="/bookatrip"
           element={
