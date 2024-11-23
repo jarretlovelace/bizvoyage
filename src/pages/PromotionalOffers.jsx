@@ -34,7 +34,7 @@ const PromotionalOffers = () => {
           <h2 className="text-red-700 text-3xl font-semibold mb-4">Fly High for Less</h2>
           <p className="text-lg mb-4">
             Book a business class flight and get 30% off your next hotel stay. Exclusive only to BizVoyage members!
-          </p>
+          </p> 
           <Link
             to="/bookatrip"
             className="text-gray-500 underline hover:text-red-700 transition-colors"
