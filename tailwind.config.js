@@ -5,7 +5,10 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {  // 'extend' should be lowercase
+    extend: {
+      fontFamily: {
+        custom: ['Skyfont', 'sans-serif'], // Your custom font here
+      },
       keyframes: {
         fadeIn: {
           '0%': { opacity: 0 },
@@ -17,10 +20,10 @@ module.exports = {
         },
       },
       animation: {
-        'fade-in': 'fadeIn 0.5s ease-out', 
-        'slide-up': 'slideUp 0.5s ease-out',  // Missing 's' for seconds
+        'fade-in': 'fadeIn 0.5s ease-out',  // Add the 's' for seconds here
+        'slide-up': 'slideUp 0.5s ease-out', // Add the 's' for seconds here
       },
-    }, 
+    },
   },
   plugins: [],
 };

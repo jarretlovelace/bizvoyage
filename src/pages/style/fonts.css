@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Skyfont';
+    src: url('/public/fonts/Skyfont.otf') format('otf'),
+         url('/public/fonts/Skyfont.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: 'Skyfont', sans-serif;
+  }

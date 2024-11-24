@@ -1,7 +1,8 @@
 import React from "react";
 
 // components
-import CoinSwap from '../components/Hq/CoinSwap';
+import Notifications from "../components/Hq/Notifications";
+
 
 const HQ = () => {
   const sections = [
@@ -57,7 +58,7 @@ const HQ = () => {
               backgroundPosition: "center",
             }}
           >
-            <h1 className="text-9xl text-red-800 font-bold">HQ</h1>
+            <h1 className="font-custom text-9xl text-red-800 font-thin justify-left">TRAVEL HQ</h1>
           </div>
         </section>
 
@@ -74,8 +75,8 @@ const HQ = () => {
           ))}
         </div>
 
-        {/* Sections */}
-        {sections.map((section) => (
+  {/* Sections */}
+  {sections.map((section) => (
           <section
             id={section.id}
             key={section.id}

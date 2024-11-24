@@ -4,8 +4,7 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './style/Dashboard.css';
 import Weather from '../components/Weather';
-import logo from '../images/bv2.png';
-import { Link } from 'react-router-dom';
+import { FaComments } from 'react-icons/fa'; // Importing a chat icon from react-icons
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -14,6 +13,8 @@ const localizer = momentLocalizer(moment);
 const Dashboard = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [activeSection, setActiveSection] = useState(null); // Tracks the active section
+  const [showMessagingCenter, setShowMessagingCenter] = useState(false); // Tracks messaging center toggle
   const [events, setEvents] = useState([
     {
       id: 1,
@@ -24,7 +25,6 @@ const Dashboard = () => {
   ]);
   const [newEvent, setNewEvent] = useState({ title: '', start: '', end: '' });
   const [editEvent, setEditEvent] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
 
@@ -73,27 +73,27 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="relative w-screen h-screen bg-gray-100">
-      {/* Navigation */}
-      {/* <header className="w-full py-4 px-8 flex justify-between items-center bg-red-700 bg-opacity-70">
-        <img src={logo} alt="BizVoyage Logo" className="h-12 object-contain" />
-        <div className="space-x-4">
-          <Link to="/profile" className="px-4 py-2 bg-red-700 text-white rounded-md">Profile</Link>
-          <Link to="/settings" className="px-4 py-2 bg-red-700 text-white rounded-md">Settings</Link>
-        </div>
-      </header> */}
-
-      {/* Main Content */}
+    <div className="dashboard-container relative w-screen h-screen">
       <div className="relative z-10 min-h-screen p-6 bg-gray-100 bg-opacity-90">
         <div className="grid grid-cols-2 gap-6 mb-6">
-          {/* Weather */}
-          <div className="col-span-1 bg-white rounded-lg shadow-lg p-6" data-aos="fade-up">
+          {/* Weather Section */}
+          <div
+            className={`col-span-1 bg-white rounded-lg shadow-lg p-6 ${
+              activeSection === 'weather' ? 'opacity-100' : 'opacity-50'
+            }`}
+            onClick={() => setActiveSection('weather')}
+          >
             <h2 className="text-xl font-bold text-red-700 mb-4">Weather</h2>
             <Weather />
           </div>
 
           {/* Receipt Scanner */}
-          <div className="col-span-1 bg-white rounded-lg shadow-lg p-6" data-aos="fade-up">
+          <div
+            className={`col-span-1 bg-white rounded-lg shadow-lg p-6 ${
+              activeSection === 'scanner' ? 'opacity-100' : 'opacity-50'
+            }`}
+            onClick={() => setActiveSection('scanner')}
+          >
             <h2 className="text-xl font-bold text-red-700 mb-4">Scan Receipts</h2>
             <input type="file" accept="image/*" onChange={handleFileChange} />
             {previewUrl && <img src={previewUrl} alt="Receipt Preview" className="mt-4" />}
@@ -101,7 +101,13 @@ const Dashboard = () => {
         </div>
 
         {/* Calendar Section */}
-        <div id="calendar" className="mb-6 bg-white rounded-lg shadow-lg p-6" data-aos="fade-up">
+        <div
+          id="calendar"
+          className={`mb-6 bg-white rounded-lg shadow-lg p-6 ${
+            activeSection === 'calendar' ? 'opacity-100' : 'opacity-50'
+          }`}
+          onClick={() => setActiveSection('calendar')}
+        >
           <h2 className="text-xl font-bold text-red-700 mb-4">Calendar</h2>
           <Calendar
             localizer={localizer}
@@ -137,10 +143,25 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Messaging Section */}
-        <div id="messaging" className="grid grid-cols-2 gap-6 mb-6">
-          <div className="col-span-2 bg-white rounded-lg shadow-lg p-6" data-aos="fade-up">
+        {/* Messaging Center */}
+        {!showMessagingCenter ? (
+          // Icon View
+          <div
+            className="fixed bottom-6 right-6 bg-red-700 text-white rounded-full p-4 shadow-lg cursor-pointer"
+            onClick={() => setShowMessagingCenter(true)}
+          >
+            <FaComments size={24} />
+          </div>
+        ) : (
+          // Expanded View
+          <div className="fixed bottom-6 right-6 bg-white rounded-lg shadow-lg p-6 w-96">
             <h2 className="text-xl font-bold text-red-700 mb-4">Messaging Center</h2>
+            <button
+              className="absolute top-2 right-2 text-red-700"
+              onClick={() => setShowMessagingCenter(false)}
+            >
+              ✕
+            </button>
             <div className="border p-4 h-64 overflow-y-scroll bg-gray-50 mb-4">
               {messages.length === 0 ? (
                 <p className="text-gray-500">No messages yet...</p>
@@ -160,16 +181,13 @@ const Dashboard = () => {
                 className="border p-2 flex-grow mr-2"
                 placeholder="Type a message..."
               />
-              <button type="submit" className="bg-red-700 text-white p-2 rounded">Send</button>
+              <button type="submit" className="bg-red-700 text-white p-2 rounded">
+                Send
+              </button>
             </form>
           </div>
-        </div>
+        )}
       </div>
-
-      {/* Footer */}
-      <footer className="relative z-10 bg-red-700 text-white text-center py-4">
-        <p className="text-sm">&copy; 2024 BizVoyage. All rights reserved.</p>
-      </footer>
     </div>
   );
 };

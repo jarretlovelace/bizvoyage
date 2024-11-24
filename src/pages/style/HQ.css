@@ -1,21 +1,3 @@
-/* CoinSwap */
-.currency-exchange-container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .currency-exchange-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .currency-exchange-form div {
-    margin: 10px 0;
-  }
-  
   input, select {
     padding: 8px;
     font-size: 16px;
