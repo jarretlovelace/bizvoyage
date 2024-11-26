@@ -1,34 +1,8 @@
-@keyframes parachute {
-    0% {
-      transform: translateY(100vh) scale(0.8);
-      opacity: 0;
-    }
-    50% {
-      transform: translateY(-20px) scale(1.05);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(0) scale(1);
-    }
-  }
-  
-  .video-parachute {
-    animation: parachute 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-  }
-  
-  @media (max-width: 768px) {
-    .video-parachute {
-      left: 2%;
-      width: 85vw;
-      height: auto;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .video-parachute {
-      left: 5%;
-      width: 95vw;
-      height: auto;
-    }
-  }
-  
+.landingpage-background {
+  background-image: url('/images/image5.png'); /* Corrected image path */
+  background-size: cover;                     /* Ensures the image covers the container */
+  background-position: center;                /* Centers the image */
+  background-repeat: no-repeat;               /* Prevents tiling of the image */
+  height: 100vh;                              /* Sets the height to the full viewport */
+  width: 100%;                                /* Ensures full width of the page */
+}
