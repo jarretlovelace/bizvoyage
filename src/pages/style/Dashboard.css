@@ -4,6 +4,14 @@
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents tiling */
 }
+
+.dashboard-header{
+  font0family:'Skyont', sans-serif;
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: red
+}
+
 .dashboard-section {
  border: 2px solid #d1d5db;
     padding: 20px;

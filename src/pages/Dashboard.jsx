@@ -4,17 +4,18 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './style/Dashboard.css';
 import Weather from '../components/Weather';
-import { FaComments } from 'react-icons/fa'; // Importing a chat icon from react-icons
+import { FaComments } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+// Calendar localizer
 const localizer = momentLocalizer(moment);
 
 const Dashboard = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
-  const [activeSection, setActiveSection] = useState(null); // Tracks the active section
-  const [showMessagingCenter, setShowMessagingCenter] = useState(false); // Tracks messaging center toggle
+  const [activeSection, setActiveSection] = useState(null);
+  const [showMessagingCenter, setShowMessagingCenter] = useState(false);
   const [events, setEvents] = useState([
     {
       id: 1,
@@ -74,6 +75,17 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container relative w-screen h-screen">
+      {/* Header Sections */}
+      <header className="bg-gray- text-red-800 p-4 shadow-lg">
+        <h1
+          className="text-9xl font-bold mb-2"
+          style={{ fontFamily: "'Skyfont', sans-serif" }}
+        >
+          DASHBOARD
+        </h1>
+        <p className="text-3xl">because running the world should look organized.</p>
+      </header>
+
       <div className="relative z-10 min-h-screen p-6 bg-gray-100 bg-opacity-90">
         <div className="grid grid-cols-2 gap-6 mb-6">
           {/* Weather Section */}
@@ -145,7 +157,6 @@ const Dashboard = () => {
 
         {/* Messaging Center */}
         {!showMessagingCenter ? (
-          // Icon View
           <div
             className="fixed bottom-6 right-6 bg-red-700 text-white rounded-full p-4 shadow-lg cursor-pointer"
             onClick={() => setShowMessagingCenter(true)}
@@ -153,7 +164,6 @@ const Dashboard = () => {
             <FaComments size={24} />
           </div>
         ) : (
-          // Expanded View
           <div className="fixed bottom-6 right-6 bg-white rounded-lg shadow-lg p-6 w-96">
             <h2 className="text-xl font-bold text-red-700 mb-4">Messaging Center</h2>
             <button
