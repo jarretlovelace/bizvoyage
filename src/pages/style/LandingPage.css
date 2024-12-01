@@ -1,4 +1,4 @@
-.landingpage-background {
+.landing-page {
   background-image: url('/images/image5.png'); /* Corrected image path */
   background-size: cover;                     /* Ensures the image covers the container */
   background-position: center;                /* Centers the image */

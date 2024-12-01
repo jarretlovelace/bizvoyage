@@ -7,14 +7,14 @@ import '../pages/style/LandingPage.css';
 
 const testimonials = [
   {
-    avatar: "/public/images/testimonial2.png",
+    avatar: "/images/testimonial2.png",
     name: "John Doe",
     role: "CEO at ExampleCorp",
     testimonial: "This service is amazing! It completely transformed our business travel process.",
     rating: 5,
   },
   {
-    avatar: "/public/images/testimonial1.png",
+    avatar: "/images/testimonial1.png",
     name: "Jane Smith",
     role: "Manager at Techify",
     testimonial: "A seamless and intuitive experience. Highly recommended!",
@@ -102,7 +102,7 @@ const LandingPage = () => {
               &times;
             </button>
             <video className="w-full rounded-lg" controls>
-              <source src="/videos/BizVoyageVid.mp4" type="video/mp4" />
+              <source src="/src/videos/BizVoyage_Experience.mp4" type="video/mp4" />
               <source src="/videos/BizVoyage_Experience.mp4" type="video/webm" />
               Your browser does not support the video tag.
             </video>
@@ -118,17 +118,17 @@ const LandingPage = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FeatureCard
-              icon="/public/images/tripplanning.jpg"
+              icon="/images/tripplanning.jpg"
               title="Effortless Trip Planning"
               description="Plan and book your business trips in minutes with a seamless experience."
             />
             <FeatureCard
-              icon="/public/images/expensetracking.jpg"
+              icon="/images/expensetracking.jpg"
               title="Real-Time Expense Tracking"
               description="Track your travel expenses in real-time and optimize your travel budget."
             />
             <FeatureCard
-              icon="/public/images/reportingicon.jpg"
+              icon="/images/reportingicon.jpg"
               title="Comprehensive Reporting"
               description="Generate detailed reports for trip analysis, compliance, and budgeting."
             />

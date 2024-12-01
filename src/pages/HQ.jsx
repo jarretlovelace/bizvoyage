@@ -10,37 +10,37 @@ const HQ = () => {
       id: "notifications",
       title: "Notifications",
       description: "Your business trip intel, minus the drama!",
-      backgroundImage: "../../public/images/hq6.png",
+      backgroundImage: "/images/hq6.png",
     },
     {
       id: "travel-hq",
       title: "Travel HQ",
       description: "The ultimate command center for your travels.",
-      backgroundImage: "../../public/images/hq5.png",
+      backgroundImage: "/images/hq5.png",
     },
     {
       id: "sleeper-treasure",
       title: "Sleeper Treasure",
       description: "Hidden gems for restful stays.",
-      backgroundImage: "../../public/images/hq4.png",
+      backgroundImage: "/images/hq4.png",
     },
     {
       id: "coin-swap",
       title: "Coin Swap",
       description: "Currency exchange made simple.",
-      backgroundImage: "../../public/images/hq3.png",
+      backgroundImage: "/images/hq3.png",
     },
     {
       id: "biztracks",
       title: "BizTracks",
       description: "Track expenses like a boss.",
-      backgroundImage: "../../public/images/hq2.png",
+      backgroundImage: "/images/hq2.png",
     },
     {
       id: "rewards-radar",
       title: "Rewards Radar",
       description: "Spot the best perks and points.",
-      backgroundImage: "../../public/images/hq1b.png",
+      backgroundImage: "/images/hq1b.png",
     },
   ];
 

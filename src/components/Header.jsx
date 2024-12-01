@@ -18,7 +18,7 @@ const Header = () => {
 
   const handleLogoClick = () => {
     if (userLoggedIn) {
-      navigate('/Dashboard');  // Go to Dashboardpage if signed in
+      navigate('/HQ');  // Go to Dashboardpage if signed in
     } else {
       navigate('/landingpage');  // Otherwise, go to the landing page
     }
