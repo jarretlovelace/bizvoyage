@@ -81,7 +81,7 @@ const Dashboard = () => {
           className="text-9xl font-bold mb-2"
           style={{ fontFamily: "'Skyfont', sans-serif" }}
         >
-          DASHBOARD
+          Travel Dashboard
         </h1>
         <p className="text-3xl">because running the world should look organized.</p>
       </header>

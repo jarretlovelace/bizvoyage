@@ -2,21 +2,17 @@ import React from 'react';
 
 const Settings = () => {
     return (
-        <div className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-lg">
-            <h1 className="text-2xl font-bold mb-4 text-blue-600">Settings</h1>
-            
-            <div className="w-full max-w-md bg-white rounded-lg shadow-md p-4">
-                <h2 className="text-lg font-semibold mb-3">Profile</h2>
-                <form className="flex flex-col">
-                    <label className="mb-2">Name:</label>
-                    <input type="text" className="p-2 border rounded mb-4" placeholder="Your Name" />
-
-                    <label className="mb-2">Email:</label>
-                    <input type="email" className="p-2 border rounded mb-4" placeholder="Your Email" />
-
-                    <button className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Save Changes</button>
-                </form>
-            </div>
+        <div 
+            className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-lg"
+            style={{ 
+                backgroundImage: `url('/images/images-3.jpeg')`, // Path from the public folder
+                backgroundSize: 'cover', // Ensures the image covers the entire background
+                backgroundPosition: 'center', // Centers the image
+                height: '100vh', // Ensures it spans the full viewport height
+                width: '100vw', // Optional, for full viewport width
+            }}
+        >
+            <h1 className="text-2xl font-bold mb-4 text-red-700">Notifications</h1>
 
             <div className="w-full max-w-md bg-white rounded-lg shadow-md p-4 mt-6">
                 <h2 className="text-lg font-semibold mb-3">Preferences</h2>
@@ -35,7 +31,9 @@ const Settings = () => {
                         <option>French</option>
                     </select>
 
-                    <button className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Update Preferences</button>
+                    <button className="bg-gray-700 text-white p-2 rounded hover:bg-red-700">
+                        Update Preferences
+                    </button>
                 </form>
             </div>
         </div>

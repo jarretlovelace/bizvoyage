@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'; // Combined imports
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { doSignOut } from '../auth'; // Assuming `doSignOut` handles sign-out logic
 
@@ -35,24 +35,19 @@ const Navbar = () => {
         />
       </div>
 
-      {/* Right-aligned Buttons: Profile, Settings, and Menu */}
+      {/* Navigation Links */}
       <div className="flex items-center space-x-4">
-       {/* HQ Link */}
-       <Link to="/HQ" className="px-1 py-1 text-white  hover:bg-red-800 transition">
+        {/* Book A Trip Link (moved to the left of HQ) */}
+        <Link to="/bookatrip" className="px-1 py-1 text-white hover:bg-red-800 transition">
+          + Trip
+        </Link>
+        {/* HQ Link */}
+        <Link to="/HQ" className="px-1 py-1 text-white hover:bg-red-800 transition">
           HQ
         </Link>
         {/* Dashboard Link */}
-          <Link to="/dashboard" className="px-1 py-1 text-white  hover:bg-red-800 transition">
+        <Link to="/dashboard" className="px-1 py-1 text-white hover:bg-red-800 transition">
           Dashboard
-        </Link>
-        {/* Profile Link */}
-        <Link to="/profile" className="px-1 py-1 text-white  hover:bg-red-800 transition">
-          Profile
-        </Link>
-
-        {/* Settings Link */}
-        <Link to="/settings" className="px-1 py-1 text-white hover:bg-red-800 transition">
-          Settings
         </Link>
 
         {/* Menu Button */}
@@ -69,10 +64,13 @@ const Navbar = () => {
       {isOpen && (
         <ul className="absolute right-0 top-full w-48 bg-red-800 text-white p-2 rounded-lg shadow-lg z-30 transition duration-200 ease-in-out">
           <li onClick={closeMenu}>
-            <Link to="/Dashboard" className="block p-2 hover:text-gray-300">Dashboard</Link>
+            <Link to="/dashboard" className="block p-2 hover:text-gray-300">Dashboard</Link>
           </li>
           <li onClick={closeMenu}>
-            <Link to="/bookatrip" className="block p-2 hover:text-gray-300">Book A Trip</Link>
+            <Link to="/profile" className="block p-2 hover:text-gray-300">Profile</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/settings" className="block p-2 hover:text-gray-300">Settings</Link>
           </li>
           <li onClick={closeMenu}>
             <Link to="/mytrips" className="block p-2 hover:text-gray-300">Trips</Link>
