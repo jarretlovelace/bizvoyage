@@ -5,14 +5,14 @@ const Settings = () => {
         <div 
             className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-lg"
             style={{ 
-                backgroundImage: `url('/images/images-3.jpeg')`, // Path from the public folder
+                backgroundImage: `url('/images/notifications.jpg')`, // Path from the public folder
                 backgroundSize: 'cover', // Ensures the image covers the entire background
                 backgroundPosition: 'center', // Centers the image
                 height: '100vh', // Ensures it spans the full viewport height
                 width: '100vw', // Optional, for full viewport width
             }}
         >
-            <h1 className="text-2xl font-bold mb-4 text-red-700">Notifications</h1>
+            <h1 className="justify-left text-5xl font-bold mb-4 text-red-700">NOTIFICATIONS</h1>
 
             <div className="w-full max-w-md bg-white rounded-lg shadow-md p-4 mt-6">
                 <h2 className="text-lg font-semibold mb-3">Preferences</h2>
